@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard | BarterBrains</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="dashboard">
+
+  <!-- HEADER -->
+  <header class="dashboard-header">
+    <div class="logo">BarterBrains</div>
+    <div class="user-info">
+      <img src="https://i.pravatar.cc/40" alt="User" class="avatar">
+      <span class="username">Ali</span>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <div class="dashboard-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <h3>Your Skills</h3>
+      <div class="skills-group">
+        <p>Teach:</p>
+        <span class="skill-badge">English</span>
+      </div>
+      <div class="skills-group">
+        <p>Learn:</p>
+        <span class="skill-badge">Guitar</span>
+      </div>
+      <a href="edit-profile.html" class="edit-profile">Edit Profile</a>
+    </aside>
+
+    <!-- MATCHES GRID -->
+    <main class="matches">
+      <h2>Matched for You</h2>
+      <div class="matches-grid">
+        <!-- Example match card -->
+        <div class="match-card">
+          <img src="https://i.pravatar.cc/100?img=1" alt="User">
+          <h4>Sarah</h4>
+          <p>Teaches: Guitar</p>
+          <p>Wants: English</p>
+          <button class="request-btn">Request Live Call</button>
+        </div>
+
+        <div class="match-card">
+          <img src="https://i.pravatar.cc/100?img=2" alt="User">
+          <h4>John</h4>
+          <p>Teaches: Guitar</p>
+          <p>Wants: English</p>
+          <button class="request-btn">Request Live Call</button>
+        </div>
+
+        <div class="match-card">
+          <img src="https://i.pravatar.cc/100?img=3" alt="User">
+          <h4>Emma</h4>
+          <p>Teaches: Guitar</p>
+          <p>Wants: English</p>
+          <button class="request-btn">Request Live Call</button>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- REQUEST CALL MODAL -->
+  <div class="modal-overlay" id="callModal">
+    <div class="modal">
+      <div class="modal-content">
+        <p id="modal-status">Sending request...</p>
+        <button id="joinCallBtn" style="display: none;">Join Call</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+
+</html>
