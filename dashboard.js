@@ -1,20 +1,3 @@
-// Animate match cards when Dashboard loads
-  
-gsap.from('.match-card', {
-  opacity: 0,
-  y: 30,
-  stagger: 0.2,
-  duration: 0.8
-});
-
-// Animate sidebar skills badges
-gsap.from('.sidebar .skill-badge', {
-  opacity: 0,
-  x: -20,
-  stagger: 0.2,
-  duration: 0.5
-});
-
 // Hover effect for request buttons
 document.querySelectorAll('.request-btn').forEach(btn => {
   btn.addEventListener('mouseenter', () => {

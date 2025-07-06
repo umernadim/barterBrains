@@ -23,23 +23,6 @@ gsap.from('.hero .cta-btn', {
   duration: 0.6
 });
 
-// How it works cards
-gsap.from('.step', {
-  opacity: 0,
-  y: 50,
-  stagger: 0.3,
-  duration: 0.8,
-  delay: 0.5
-});
-
-// Skill badges
-gsap.from('.skill-badge', {
-  opacity: 0,
-  scale: 0.8,
-  stagger: 0.1,
-  duration: 0.5,
-  delay: 1
-});
 }
 
 landingPgAnime();
