@@ -1,0 +1,123 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+}
+
+
+.how-it-works {
+  padding: 60px 5%;
+  text-align: center;
+}
+
+.how-it-works h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+.steps {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.step {
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  width: 250px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.skills {
+  padding: 60px 5%;
+  text-align: center;
+}
+
+.skills-list {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+}
+
+.skills .skill-badge {
+  background: #FF7A59;
+  color: #fff;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: default;
+  transition: all 0.3s ease;
+}
+
+footer{
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(135deg, #4C8BF5 20%, #74b9ff 100%);
+  padding: 20px 0;
+}
+
+footer p{
+  color: #fff;
+}
+
+@media screen and (max-width:768px) {
+  .logo {
+    font-size: 20px;
+  }
+
+  .cta-btn {
+    padding: 8px 18px;
+    border-radius: 25px;
+  }
+
+  .cta-btn.large {
+    padding: 12px 26px;
+    font-size: 18px;
+  }
+
+  .hero {
+    min-height: 80vh;
+  }
+
+  .how-it-works {
+    padding: 60px 5%;
+    text-align: center;
+  }
+
+  .how-it-works h2 {
+    margin-bottom: 30px;
+  }
+
+  .steps {
+    gap: 20px;
+  }
+
+  .step {
+    padding: 26px;
+    border-radius: 10px;
+  }
+
+  .skills {
+    padding: 30px 3%;
+  }
+
+  .skills-list {
+    margin-top: 25px;
+    gap: 5px;
+  }
+
+  .skill-badge {
+    padding: 12px 26px;
+    font-size: 20px;
+  }
+
+}
