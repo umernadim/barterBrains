@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,17 +10,69 @@
 
     <link rel="stylesheet" href="style1.css">
 </head>
-<body id="dashboard">
-    <nav>
-        <h2>BarterBrains</h2>
-        <div id="user-info">
-            <img src="assets/profile-img.jpg" alt="">
-            <a href="#">M.Umer</a>
-            <div id="logout-account">
-                <a href="#"><i class="ri-logout-circle-r-line"></i> Logout</a>
-                <a href="#"><i class="ri-delete-bin-4-line"></i> Delete</a>
+
+<body>
+    <div id="dashboard">
+        <nav>
+            <div id="nav-left">
+                <img src="assets/profile-img.jpg" alt="">
+                <div id="user-info">
+                    <h4>M.Umer</h4>
+                    <h4>Web Developer</h4>
+                </div>
+            </div>
+      
+                <a href="#">Logout <i class="ri-logout-circle-r-line"></i></a>
+                
+       
+        </nav>
+        <!-- code for user-skill-section  -->
+        <aside id="sidebar">
+            <h2>BarterBrains</h2>
+            <div class="home">
+                <i class="ri-home-9-fill"></i>
+                <a href="#">Home</a>
+            </div>
+            <div class="home">
+                <i class="ri-message-fill"></i>
+                <a href="#">Messages</a>
+            </div>
+            <div class="home">
+                <i class="ri-links-line"></i>
+                <a href="#">Request</a>
+            </div>
+            <div class="home">
+                <i class="ri-shield-user-fill"></i>
+                <a href="#">Profile</a>
+            </div>
+        </aside>
+
+        <div id="suggested-user">suggested-user</div>
+        <div id="user-profile">
+            <div id="img-container">
+                <img src="assets/background-img.jpg" alt="" id="back-img">
+                <img src="assets/profile-img.jpg" alt="" id="profile-img">
+            </div>
+
+            <div id="profile-content">
+                <div id="buttons">
+                    <button>Messages</button>
+                    <button>Edit Profile</button>
+                </div>
+                <h3 id="profile-name">Muhammad Umer</h3>
+                <h4>
+                    <span id="city">Karachi, </span>
+                    <span id="country">Pakistan</span>
+                </h4>
+                <div id="skill-badges">
+                    <h4>Teaching: <span id="teach">Guitar</span></h4>
+                    <h4>Learning: <span id="learn">English</span></h4>
+                </div>
+
             </div>
         </div>
-    </nav>
+        <div id="footer">footer</div>
+    </div>
 </body>
+
 </html>
