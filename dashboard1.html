@@ -21,33 +21,118 @@
                     <h4>Web Developer</h4>
                 </div>
             </div>
-      
-                <a href="#">Logout <i class="ri-logout-circle-r-line"></i></a>
-                
-       
+
+            <a href="#">Logout <i class="ri-logout-circle-r-line"></i></a>
         </nav>
         <!-- code for user-skill-section  -->
         <aside id="sidebar">
-            <h2>BarterBrains</h2>
-            <div class="home">
-                <i class="ri-home-9-fill"></i>
-                <a href="#">Home</a>
+            <div id="sidebar-header">
+                <h2>BarterBrains</h2>
+                <i id="menuBtn" class="ri-menu-3-line"></i>
             </div>
-            <div class="home">
-                <i class="ri-message-fill"></i>
-                <a href="#">Messages</a>
-            </div>
-            <div class="home">
-                <i class="ri-links-line"></i>
-                <a href="#">Request</a>
-            </div>
-            <div class="home">
-                <i class="ri-shield-user-fill"></i>
-                <a href="#">Profile</a>
+            <div id="sidebar-links">
+                <div class="link">
+
+                    <a href="#">
+                        <i class="ri-home-9-line"></i>
+                        <span>Home</span>
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="#">
+                        <i class="ri-discuss-line"></i> <span>Messages</span>
+                    </a>
+                </div>
+                <div class="link">
+                    <a href="#"><i class="ri-links-line">
+                        </i> <span>Request</span></a>
+                </div>
+                <div class="link">
+                    <a href="#" id="show-profile">
+                        <i class="ri-shield-user-line"></i> <span>Profile</span></a>
+                </div>
             </div>
         </aside>
 
-        <div id="suggested-user">suggested-user</div>
+        <div id="suggested-user">
+            <div id="suggested-user-header">
+                <h2>Match for you..</h2>
+                <form action="">
+                    <input type="text" name="search" value="" placeholder="Search user...">
+                    <button type="submit"><i class="ri-user-search-line"></i></button>
+                </form>
+            </div>
+
+           <div id="cards-container">
+             <div class="card">
+                <img src="assets/profile-img.jpg" alt="">
+                <h3>M.Umer</h3>
+                <p>Teaches: <span id="tech-badge">Guitar</span></p>
+                <p>Wants: <span id="Learn-badge">English</span></p>
+                <div id="buttons">
+                    <button>Connect</button>
+                    <button>Profile</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="assets/profile-img.jpg" alt="">
+                <h3>M.Umer</h3>
+                <p>Teaches: <span id="tech-badge">Guitar</span></p>
+                <p>Wants: <span id="Learn-badge">English</span></p>
+                <div id="buttons">
+                    <button>Connect</button>
+                    <button>Profile</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="assets/profile-img.jpg" alt="">
+                <h3>M.Umer</h3>
+                <p>Teaches: <span id="tech-badge">Guitar</span></p>
+                <p>Wants: <span id="Learn-badge">English</span></p>
+                <div id="buttons">
+                    <button>Connect</button>
+                    <button>Profile</button>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="assets/profile-img.jpg" alt="">
+                <h3>M.Umer</h3>
+                <p>Teaches: <span id="tech-badge">Guitar</span></p>
+                <p>Wants: <span id="Learn-badge">English</span></p>
+                <div id="buttons">
+                    <button>Connect</button>
+                    <button>Profile</button>
+                </div>
+            </div>
+            <div class="card">
+                <img src="assets/profile-img.jpg" alt="">
+                <h3>M.Umer</h3>
+                <p>Teaches: <span id="tech-badge">Guitar</span></p>
+                <p>Wants: <span id="Learn-badge">English</span></p>
+                <div id="buttons">
+                    <button>Connect</button>
+                    <button>Profile</button>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="assets/profile-img.jpg" alt="">
+                <h3>M.Umer</h3>
+                <p>Teaches: <span id="tech-badge">Guitar</span></p>
+                <p>Wants: <span id="Learn-badge">English</span></p>
+                <div id="buttons">
+                    <button>Connect</button>
+                    <button>Profile</button>
+                </div>
+            </div>
+
+           </div>
+        </div>
+
+        <!-- code for user-profile -->
         <div id="user-profile">
             <div id="img-container">
                 <img src="assets/background-img.jpg" alt="" id="back-img">
@@ -71,8 +156,10 @@
 
             </div>
         </div>
-        <div id="footer">footer</div>
     </div>
+
+
+    <script src="script.js"></script>
 </body>
 
 </html>
