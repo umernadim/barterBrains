@@ -1,67 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BarterBrains</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BarterBrains</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
 
-  <!-- NAV -->
-  <nav>
-    <div class="logo">BarterBrains</div>
-    <a href="create-profile.html" class="cta-btn">Create Profile</a>
-  </nav>
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Teach what you know,<br>Learn what you love.</h1>
-      <p>Connect instantly. Exchange skills. Meet live.</p>
-      <a href="#" class="cta-btn large">Get Started</a>
-    </div>
-  </section>
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
 
-  <!-- HOW IT WORKS -->
-  <section class="how-it-works">
-    <h2>How It Works</h2>
-    <div class="steps">
-      <div class="step">
-        <h3>1. Create Profile</h3>
-        <p>Add what you can teach and what you want to learn.</p>
+    <link href="css/templatemo-pod-talk.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style1.css" />
+  </head>
+
+  <body>
+    <main>
+      <!-- code for navBar  -->
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <h6 style="color: #fff">BarterBrains</h6>
+
+          <div class="ms-4">
+            <a
+              href="signup.html"
+              class="btn custom-btn custom-border-btn smoothscroll"
+              >Create Profile</a
+            >
+          </div>
+        </div>
+      </nav>
+
+      <!-- code for her-section  -->
+      <section class="hero-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-12">
+              <div class="text-center mb-5 pb-2">
+                <h1 class="text-white">Skill Up Without Paying Up.</h1>
+
+                <p class="text-white">
+                  Share What You Know. Learn What You Love.
+                </p>
+
+                <a href="login.html" class="btn custom-btn smoothscroll mt-3"
+                  >Get Started</a
+                >
+              </div>
+              <!-- == CAROUSEL ==-->
+              <div id="carousel" class="owl-carousel owl-theme">
+                <!-- cards code is in javascript  -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works">
+      <h2>How It Works</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>1. Create Profile</h3>
+          <p>Add what you can teach and what you want to learn.</p>
+        </div>
+        <div class="step">
+          <h3>2. Get Matches</h3>
+          <p>We find people who want to swap skills with you.</p>
+        </div>
+        <div class="step">
+          <h3>3. Request Live Call</h3>
+          <p>Chat live, learn together, grow together.</p>
+        </div>
       </div>
-      <div class="step">
-        <h3>2. Get Matches</h3>
-        <p>We find people who want to swap skills with you.</p>
+    </section>
+
+    <!-- POPULAR SKILLS -->
+    <section class="skills">
+      <h2>Popular Skills</h2>
+      <div class="skills-list">
+        <span class="skill-badge">English</span>
+        <span class="skill-badge">Guitar</span>
+        <span class="skill-badge">Yoga</span>
+        <span class="skill-badge">Coding</span>
+        <span class="skill-badge">Cooking</span>
+        <span class="skill-badge">Photography</span>
       </div>
-      <div class="step">
-        <h3>3. Request Live Call</h3>
-        <p>Chat live, learn together, grow together.</p>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- POPULAR SKILLS -->
-  <section class="skills">
-    <h2>Popular Skills</h2>
-    <div class="skills-list">
-      <span class="skill-badge">English</span>
-      <span class="skill-badge">Guitar</span>
-      <span class="skill-badge">Yoga</span>
-      <span class="skill-badge">Coding</span>
-      <span class="skill-badge">Cooking</span>
-      <span class="skill-badge">Photography</span>
-    </div>
-  </section>
+    <!-- FOOTER -->
+    <footer>
+      <p>© All rights reserved by BarterBrains 2025.</p>
+    </footer>
 
-  <!-- FOOTER -->
-   <footer>
-    <p>© All rights reserved by BarterBrains 2025.</p>
-   </footer>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-  <script src="script.js"></script>
-</body>
+    <!-- JAVASCRIPT FILES -->
+    <script src="script.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/custom.js"></script>
+  </body>
 </html>
