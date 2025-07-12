@@ -1,32 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Edit Profile | BarterBrains</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
-<body class="edit-profile-page">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit-profile | BarterBrains</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="style1.css" />
+  </head>
+<body>
 
-  <header class="edit-header">
-    <div class="logo">BarterBrains</div>
-    <a href="dashboard.html" class="back-link">← Back to Dashboard</a>
-  </header>
+  <div class="container rounded bg-white mt-5 mb-5" style="max-width: 850px;">
 
-  <main class="edit-container">
-    <h2>Edit Your Skills</h2>
+    <div class="row">
+      <!-- ✅ PROFILE CARD with cover image -->
+      <div class="col-md-3 border-right">
+        <div class="profile-card">
+          <!-- Profile Background Image -->
+          <div class="profile-cover">
+            <img src="assets/profile-cover.avif" alt="Profile Cover" class="cover-img">
+          </div>
+          <!-- Profile Picture -->
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <img class="rounded-circle mt-2" width="150px" src="assets/profile-img.avif">
+            <span class="font-weight-bold">M.Umer</span>
+            <span class="text-black-50">umer@gmail.com</span>
+          </div>
+        </div>
+      </div>
 
-    <form class="edit-form">
-      <label for="teach">Skills You Can Teach</label>
-      <input type="text" id="teach" placeholder="e.g. English, Math">
+      <!-- ✅ PROFILE FORM -->
+      <div class="col-md-9">
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Profile Settings</h4>
+          </div>
 
-      <label for="learn">Skills You Want to Learn</label>
-      <input type="text" id="learn" placeholder="e.g. Guitar, Cooking">
+          <form action="#" method="POST">
+            <div class="row mt-2">
+              <div class="col-md-6">
+                <label class="labels">First Name</label>
+                <input type="text" class="form-control" placeholder="First name" name="first_name">
+              </div>
+              <div class="col-md-6">
+                <label class="labels">Last Name</label>
+                <input type="text" class="form-control" placeholder="Last name" name="last_name">
+              </div>
+            </div>
 
-      <button type="submit" class="save-btn">Save Changes</button>
-    </form>
-  </main>
+            <div class="row mt-3">
+              <div class="col-md-12">
+                <label class="labels">Email ID</label>
+                <input type="email" class="form-control" placeholder="Enter email" name="email">
+              </div>
+              <div class="col-md-12">
+                <label class="labels">Education</label>
+                <input type="text" class="form-control" placeholder="Education" name="education">
+              </div>
+            </div>
+
+            <div class="row mt-3">
+              <div class="col-md-6">
+                <label class="labels">Country</label>
+                <input type="text" class="form-control" placeholder="Country" name="country">
+              </div>
+              <div class="col-md-6">
+                <label class="labels">City</label>
+                <input type="text" class="form-control" placeholder="City" name="city">
+              </div>
+            </div>
+
+            <!-- ✅ Skills section -->
+            <div class="row mt-3">
+              <div class="col-md-12">
+                <label class="labels">Skill you can teach</label>
+                <input type="text" class="form-control" placeholder="e.g: Guitar, English etc.." name="teach_skill">
+              </div>
+              <div class="col-md-12 mt-3">
+                <label class="labels">Skill you want to learn</label>
+                <input type="text" class="form-control" placeholder="e.g: Guitar, English etc.." name="learn_skill">
+              </div>
+            </div>
+
+            <!-- ✅ New: Background image field -->
+            <div class="row mt-3">
+              <div class="col-md-12">
+                <label class="labels">Profile Background Image URL</label>
+                <input type="text" class="form-control" placeholder="e.g: https://example.com/cover.jpg" name="cover_image">
+              </div>
+            </div>
+
+            <div class="mt-5 text-center">
+              <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
+
+
 </html>
