@@ -39,7 +39,7 @@
 
         <div id="sidebar-links">
           <div class="link">
-            <a href="#">
+            <a href="">
               <i class="ri-home-9-line"></i>
               <span>Home</span>
             </a>
@@ -78,6 +78,7 @@
         </div>
       </aside>
 
+      <!-- code for suggested-user  -->
       <div id="suggested-user">
         <div id="suggested-user-header">
           <h2>Match for you..</h2>
@@ -99,7 +100,7 @@
             <p>Teaches: <span id="tech-badge">Guitar</span></p>
             <p>Wants: <span id="Learn-badge">English</span></p>
             <div id="buttons">
-              <button>Connect</button>
+              <button class="request-btn">Connect</button>
               <button>Profile</button>
             </div>
           </div>
@@ -170,7 +171,9 @@
         <div id="profile-content">
           <div id="buttons">
             <button>Messages</button>
-            <button>Edit Profile</button>
+            <a href="edit-profile.html">
+              <button>Edit Profile</button>
+            </a>
           </div>
           <h3 id="profile-name">Muhammad Umer</h3>
           <h4>
@@ -185,6 +188,20 @@
       </div>
     </div>
 
+
+
+      <!-- REQUEST CALL MODAL -->
+  <div class="modal-overlay" id="callModal">
+    <div class="modal">
+      <div class="modal-content">
+        <p id="modal-status">Sending request...</p>
+        <button id="joinCallBtn" style="display: none;">Join Call</button>
+      </div>
+    </div>
+  </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

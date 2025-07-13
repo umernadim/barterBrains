@@ -18,18 +18,19 @@ function sideBarToggle() {
   const menuBtn = document.getElementById("menuBtn");
   const dashboard = document.getElementById("dashboard");
 
- if (menuBtn) {
-   menuBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    dashboard.classList.toggle("active-sideBar");
-  });
- }
+  if (menuBtn) {
+    menuBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      dashboard.classList.toggle("active-sideBar");
+    });
+  }
 }
 
 sideBarToggle();
 
 // code to run cards in loop of owl-carousel
-const carouselCards = [
+function carousel() {
+  const carouselCards = [
   {
     name: "Candice",
     skill: "EnglishTeacher",
@@ -65,9 +66,10 @@ const carouselCards = [
   },
 ];
 
-let owlCarousel = document.getElementById('carousel');
+let owlCarousel = document.getElementById("carousel");
+if (owlCarousel) {
 carouselCards.forEach((card) => {
-  owlCarousel.innerHTML  += `
+  owlCarousel.innerHTML += `
   <div class="owl-carousel-info-wrap item">
                                 <img src="${card.userImg}"
                                     class="owl-carousel-image img-fluid" alt="">
@@ -95,3 +97,96 @@ carouselCards.forEach((card) => {
                             </div>
   `;
 });
+
+}
+}
+
+carousel();
+
+  // update Profile images
+function updateprofileImages() {
+  let profileInput = document.getElementById('profileInput')
+  if (profileInput) {
+    profileInput.addEventListener('change', function() {
+    const file = this.files[0];
+    if (file) {
+      document.getElementById('profile-img').src = URL.createObjectURL(file);
+    }
+  });
+
+  // Cover image preview
+  let coverInput = document.getElementById('coverInput')
+  coverInput.addEventListener('change', function() {
+    const file = this.files[0];
+    if (file) {
+      document.getElementById('profile-cover').src = URL.createObjectURL(file);
+    }
+  });
+}
+}
+
+
+updateprofileImages();
+
+
+
+
+
+function requestCallBtn() {
+  
+// Hover effect for request buttons
+document.querySelectorAll('.request-btn').forEach(btn => {
+  btn.addEventListener('mouseenter', () => {
+    gsap.to(btn, { scale: 1.05, duration: 0.2 });
+  });
+  btn.addEventListener('mouseleave', () => {
+    gsap.to(btn, { scale: 1, duration: 0.2 });
+  });
+});
+
+
+// Get modal elements
+const callModal = document.getElementById('callModal');
+const modalStatus = document.getElementById('modal-status');
+const joinCallBtn = document.getElementById('joinCallBtn');
+
+// Attach click event to each Request button
+document.querySelectorAll('.request-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Show modal
+    callModal.style.display = 'flex';
+
+    // Animate in modal
+    gsap.from('.modal', {
+      scale: 0.8,
+      opacity: 0,
+      duration: 0.3
+    });
+
+    // Reset text and button
+    modalStatus.textContent = 'Sending request...';
+    joinCallBtn.style.display = 'none';
+
+    // Simulate waiting → accepted
+    setTimeout(() => {
+      modalStatus.textContent = 'Request accepted! 🎉';
+      joinCallBtn.style.display = 'inline-block';
+    }, 2000); // 2 seconds fake wait
+  });
+});
+
+// Join Call button
+joinCallBtn.addEventListener('click', () => {
+  // Open Jitsi in new tab (for now)
+  window.open('https://meet.jit.si/SkillExchangeRoom123', '_blank');
+});
+
+// Close modal when clicking outside modal
+callModal.addEventListener('click', (e) => {
+  if (e.target === callModal) {
+    callModal.style.display = 'none';
+  }
+});
+
+}
+requestCallBtn();

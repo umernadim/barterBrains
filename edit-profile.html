@@ -14,98 +14,149 @@
     />
     <link rel="stylesheet" href="style1.css" />
   </head>
-<body>
+  <body>
+    <div id="Edit-profile-container" class="container rounded bg-white mt-5 mb-5" style="max-width: 850px">
+      <div class="row">
+        <div class="col-md-3 border-right" id="profile-card">
+          <div
+            class="d-flex flex-column align-items-center text-center p-3 py-5"
+          >
+            <!-- Cover Image -->
+            <img src="assets/profile-background-img.jpg" id="profile-cover" />
 
-  <div class="container rounded bg-white mt-5 mb-5" style="max-width: 850px;">
+            <!-- Profile Image -->
+            <img
+              class="rounded-circle"
+              id="profile-img"
+              src="assets/profile-img.avif"
+            />
 
-    <div class="row">
-      <!-- ✅ PROFILE CARD with cover image -->
-      <div class="col-md-3 border-right">
-        <div class="profile-card">
-          <!-- Profile Background Image -->
-          <div class="profile-cover">
-            <img src="assets/profile-cover.avif" alt="Profile Cover" class="cover-img">
-          </div>
-          <!-- Profile Picture -->
-          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-            <img class="rounded-circle mt-2" width="150px" src="assets/profile-img.avif">
-            <span class="font-weight-bold">M.Umer</span>
-            <span class="text-black-50">umer@gmail.com</span>
+            <!-- Label acts as button to trigger hidden input -->
+            <label class="file-label mt-5">
+              Update Profile
+              <input
+                type="file"
+                id="profileInput"
+                accept="image/*"
+                style="display: none"
+              />
+            </label>
+
+            <label class="file-label mt-2">
+              Update Cover
+              <input
+                type="file"
+                id="coverInput"
+                accept="image/*"
+                style="display: none"
+              />
+            </label>
           </div>
         </div>
-      </div>
 
-      <!-- ✅ PROFILE FORM -->
-      <div class="col-md-9">
-        <div class="p-3 py-5">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h4 class="text-right">Profile Settings</h4>
+        <div class="col-md-9">
+          <div class="p-3 py-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="text-right">Profile Settings</h4>
+            </div>
+
+            <!-- ✅ FORM starts here -->
+            <form action="#" method="POST">
+              <div class="row mt-2">
+                <div class="col-md-6">
+                  <label class="labels">First Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="First name"
+                    name="first_name"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="labels">Last Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Last name"
+                    name="last_name"
+                  />
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels">Email ID</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Enter email"
+                    name="email"
+                  />
+                </div>
+                <div class="col-md-12">
+                  <label class="labels">Education</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="e.g: Bs English"
+                    name="education"
+                  />
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <label class="labels">City</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="City"
+                    name="City"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <label class="labels">Country</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Country"
+                    name="Country"
+                  />
+                </div>
+              </div>
+
+              <!-- ✅ Moved Skills section here -->
+              <div class="row mt-3">
+                <div class="col-md-12">
+                  <label class="labels">Skill you can teach</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="e.g: Guitar, English etc.."
+                    name="teach_skill"
+                  />
+                </div>
+                <div class="col-md-12 mt-3">
+                  <label class="labels">Skill you want to learn</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="e.g: Guitar, English etc.."
+                    name="learn_skill"
+                  />
+                </div>
+              </div>
+
+              <div class="mt-5 text-center">
+                <button class="btn btn-primary profile-button" type="submit">
+                  Save Profile
+                </button>
+              </div>
+            </form>
+            <!-- ✅ FORM ends here -->
           </div>
-
-          <form action="#" method="POST">
-            <div class="row mt-2">
-              <div class="col-md-6">
-                <label class="labels">First Name</label>
-                <input type="text" class="form-control" placeholder="First name" name="first_name">
-              </div>
-              <div class="col-md-6">
-                <label class="labels">Last Name</label>
-                <input type="text" class="form-control" placeholder="Last name" name="last_name">
-              </div>
-            </div>
-
-            <div class="row mt-3">
-              <div class="col-md-12">
-                <label class="labels">Email ID</label>
-                <input type="email" class="form-control" placeholder="Enter email" name="email">
-              </div>
-              <div class="col-md-12">
-                <label class="labels">Education</label>
-                <input type="text" class="form-control" placeholder="Education" name="education">
-              </div>
-            </div>
-
-            <div class="row mt-3">
-              <div class="col-md-6">
-                <label class="labels">Country</label>
-                <input type="text" class="form-control" placeholder="Country" name="country">
-              </div>
-              <div class="col-md-6">
-                <label class="labels">City</label>
-                <input type="text" class="form-control" placeholder="City" name="city">
-              </div>
-            </div>
-
-            <!-- ✅ Skills section -->
-            <div class="row mt-3">
-              <div class="col-md-12">
-                <label class="labels">Skill you can teach</label>
-                <input type="text" class="form-control" placeholder="e.g: Guitar, English etc.." name="teach_skill">
-              </div>
-              <div class="col-md-12 mt-3">
-                <label class="labels">Skill you want to learn</label>
-                <input type="text" class="form-control" placeholder="e.g: Guitar, English etc.." name="learn_skill">
-              </div>
-            </div>
-
-            <!-- ✅ New: Background image field -->
-            <div class="row mt-3">
-              <div class="col-md-12">
-                <label class="labels">Profile Background Image URL</label>
-                <input type="text" class="form-control" placeholder="e.g: https://example.com/cover.jpg" name="cover_image">
-              </div>
-            </div>
-
-            <div class="mt-5 text-center">
-              <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
-            </div>
-          </form>
         </div>
       </div>
     </div>
-  </div>
-
-</body>
-
-
+  </body>
 </html>
