@@ -125,11 +125,7 @@ function updateprofileImages() {
 }
 }
 
-
 updateprofileImages();
-
-
-
 
 
 function requestCallBtn() {
@@ -189,4 +185,100 @@ callModal.addEventListener('click', (e) => {
 });
 
 }
-requestCallBtn();
+// requestCallBtn();
+
+
+// code for profile modal popup 
+function profileModalPopup() {
+  
+  const profileButtons = document.querySelectorAll(".card #buttons button:nth-child(2)");
+  const modal = document.getElementById("profile-modal");
+  const closeBtn = document.querySelector("#profile-modal .close-btn");
+
+  if (profileButtons) {
+  profileButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      modal.style.display = "flex";
+    });
+  });
+}
+
+ if (closeBtn) {
+  closeBtn.addEventListener("click", () => {
+    modal.style.display = "none";
+  });
+}
+
+  window.addEventListener("click", (e) => {
+    if (e.target == modal) {
+      modal.style.display = "none";
+    }
+  });
+
+}
+profileModalPopup();
+
+
+// code for testimonial section 
+function testimonial() {
+  
+const slidesContainer = document.querySelector(".slides");
+const slide = document.querySelector(".slide");
+
+let currentIndex = 0;
+const slidesToShow = 3;
+const totalSlides = document.querySelectorAll(".slide").length;
+const slidesPerMove = 1;
+
+function updateSlider() {
+  const slideWidth = slide.clientWidth + 20; // includes margin
+  slidesContainer.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+}
+
+function autoSlide() {
+  currentIndex += slidesPerMove;
+  if (currentIndex > totalSlides - slidesToShow) {
+    currentIndex = 0; // Loop back to start
+  }
+  updateSlider();
+}
+
+// Run every 3 seconds
+setInterval(autoSlide, 4000);
+}
+
+// testimonial()
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const leaveFeedbackBtn = document.getElementById('leaveFeedbackBtn');
+  const modal = document.getElementById('feedback-modal');
+  const closeBtn = document.querySelector('.close-btn');
+  const feedbackForm = document.getElementById('feedback-form');
+
+  if (leaveFeedbackBtn && modal) {
+    leaveFeedbackBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.style.display = 'block';
+    });
+  }
+
+  if (closeBtn && modal) {
+    closeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.style.display = 'none';
+    });
+  }
+
+  window.addEventListener('click', (e) => {
+    // If they click *outside* the modal content, close it
+    if (e.target === modal) {
+      modal.style.display = 'none';
+    }
+  });
+
+});

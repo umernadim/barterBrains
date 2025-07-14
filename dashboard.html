@@ -1,122 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | BarterBrains</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard | BarterBrains</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body class="dashboard">
+  <body>
+    <div id="dashboard">
+      <nav>
+        <div id="nav-left">
+          <img src="assets/profile-img.avif" alt="" />
+          <div id="user-info">
+            <h4>M.Umer</h4>
+            <h4>Web Developer</h4>
+          </div>
+        </div>
 
-  <!-- HEADER -->
-  <header class="dashboard-header">
-    <div class="logo">BarterBrains</div>
-    <div class="user-info">
-      <img src="https://i.pravatar.cc/40" alt="User" class="avatar">
-      <span class="username">Ali</span>
+        <a href="#">Logout <i class="ri-logout-circle-r-line"></i></a>
+      </nav>
+
+      <!-- code for user-skill-section  -->
+      <aside id="sidebar">
+        <div id="sidebar-header">
+          <h2>BarterBrains</h2>
+          <i id="menuBtn" class="ri-menu-3-line"></i>
+        </div>
+
+        <div id="sidebar-links">
+          <div class="link">
+            <a href="">
+              <i class="ri-home-9-line"></i>
+              <span>Home</span>
+            </a>
+          </div>
+          <div class="link">
+            <a href="#">
+              <i class="ri-discuss-line"></i> <span>Messages</span>
+            </a>
+          </div>
+          <div class="link">
+            <a href="#"><i class="ri-links-line"> </i> <span>Request</span></a>
+          </div>
+          <div class="link">
+            <a href="#" id="show-profile">
+              <i class="ri-shield-user-line"></i> <span>Profile</span></a
+            >
+          </div>
+          <div class="link">
+            <a href="#" id="leaveFeedbackBtn">
+              <i class="ri-chat-1-line"></i> <span>Leave Feedback</span>
+            </a>
+          </div>
+        </div>
+
+        <div id="more">
+          <div id="logout">
+            <a href="#">
+              <i class="ri-logout-circle-r-line"></i>
+              <span>Logout</span>
+            </a>
+            <a href="#">
+              <i class="ri-delete-bin-4-line"></i>
+              <span>Delete</span>
+            </a>
+          </div>
+
+          <h3>
+            <i class="ri-menu-line"></i>
+            <span>More</span>
+          </h3>
+        </div>
+      </aside>
+
+      <!-- code for suggested-user  -->
+      <div id="suggested-user">
+        <div id="suggested-user-header">
+          <h2>Match for you..</h2>
+          <form action="">
+            <input
+              type="text"
+              name="search"
+              value=""
+              placeholder="Search user..."
+            />
+            <button type="submit"><i class="ri-user-search-line"></i></button>
+          </form>
+        </div>
+
+        <div id="cards-container">
+          <div class="card">
+            <img src="assets/profile-img.avif" alt="" />
+            <h3>M.Umer</h3>
+            <p>Teaches: <span id="tech-badge">Guitar</span></p>
+            <p>Wants: <span id="Learn-badge">English</span></p>
+            <div id="buttons">
+              <button class="request-btn">Connect</button>
+              <button>Profile</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="assets/profile-img.avif" alt="" />
+            <h3>M.Umer</h3>
+            <p>Teaches: <span id="tech-badge">Guitar</span></p>
+            <p>Wants: <span id="Learn-badge">English</span></p>
+            <div id="buttons">
+              <button>Connect</button>
+              <button>Profile</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="assets/profile-img.avif" alt="" />
+            <h3>M.Umer</h3>
+            <p>Teaches: <span id="tech-badge">Guitar</span></p>
+            <p>Wants: <span id="Learn-badge">English</span></p>
+            <div id="buttons">
+              <button>Connect</button>
+              <button>Profile</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="assets/profile-img.avif" alt="" />
+            <h3>M.Umer</h3>
+            <p>Teaches: <span id="tech-badge">Guitar</span></p>
+            <p>Wants: <span id="Learn-badge">English</span></p>
+            <div id="buttons">
+              <button>Connect</button>
+              <button>Profile</button>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/profile-img.avif" alt="" />
+            <h3>M.Umer</h3>
+            <p>Teaches: <span id="tech-badge">Guitar</span></p>
+            <p>Wants: <span id="Learn-badge">English</span></p>
+            <div id="buttons">
+              <button>Connect</button>
+              <button>Profile</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <img src="assets/profile-img.avif" alt="" />
+            <h3>M.Umer</h3>
+            <p>Teaches: <span id="tech-badge">Guitar</span></p>
+            <p>Wants: <span id="Learn-badge">English</span></p>
+            <div id="buttons">
+              <button>Connect</button>
+              <button>Profile</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- code for user-profile -->
+      <div id="user-profile">
+        <div id="img-container">
+          <img src="assets/profile-background-img.jpg" alt="" id="back-img" />
+          <img src="assets/profile-img.avif" alt="" id="profile-img" />
+        </div>
+
+        <div id="profile-content">
+          <div id="buttons">
+            <button>Messages</button>
+            <a href="edit-profile.html">
+              <button>Edit Profile</button>
+            </a>
+          </div>
+          <h3 id="profile-name">Muhammad Umer</h3>
+          <h4>
+            <span id="city">Karachi, </span>
+            <span id="country">Pakistan</span>
+          </h4>
+          <div id="skill-badges">
+            <h4>Teaching: <span id="teach">Guitar</span></h4>
+            <h4>Learning: <span id="learn">English</span></h4>
+          </div>
+        </div>
+      </div>
     </div>
-  </header>
 
-  <!-- MAIN CONTENT -->
-  <div class="dashboard-container">
+    <!-- === User Profile Modal === -->
+    <div id="profile-modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <div class="modal-left">
+          <img
+            src="assets/profile-img.avif"
+            alt="Profile Picture"
+            class="profile-pic"
+          />
+          <h2>M.Umer</h2>
+          <h4>Web Developer</h4>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <h3>Your Skills</h3>
-      <div class="skill-group">
-        <h4>Teach:</h4>
-        <span class="skill-badge">English</span>
-      </div>
-      <div class="skill-group">
-        <h4>Learn:</h4>
-        <spap class="skill-badge">Guitar</spap>
-      </div>
-      <a href="edit-profile.html" class="edit-profile">Edit Profile</a>
-    </aside>
+          <div class="modal-buttons">
+            <button>Message</button>
+            <button>Connect</button>
+          </div>
 
-    <main class="matches">
-      <h2>Matched for You</h2>
-      <div class="matches-grid">
-        <div class="match-card">
-          <img src="https://i.pravatar.cc/100?img=1" alt="User">
-          <h4>Sarah</h4>
-          <p>Teaches: Guitar</p>
-          <p>Wants: English</p>
-          <button class="request-btn">Request Live Call</button>
+          <div class="modal-info">
+            <p><strong>Teaches:</strong> Guitar</p>
+            <p><strong>Wants:</strong> English</p>
+            <p><strong>Location:</strong> Karachi, Pakistan</p>
+            <p>
+              <strong>About:</strong> Lorem ipsum dolor sit amet, consectetur
+              adipiscing elit. Nulla facilisi. A short bio or description goes
+              here.
+            </p>
+          </div>
         </div>
 
-        <div class="match-card">
-          <img src="https://i.pravatar.cc/100?img=2" alt="User">
-          <h4>John</h4>
-          <p>Teaches: Guitar</p>
-          <p>Wants: English</p>
-          <button class="request-btn">Request Live Call</button>
-        </div>
-
-        <div class="match-card">
-          <img src="https://i.pravatar.cc/100?img=3" alt="User">
-          <h4>Emma</h4>
-          <p>Teaches: Guitar</p>
-          <p>Wants: English</p>
-          <button class="request-btn">Request Live Call</button>
+        <div class="modal-right">
+          <h3>Reviews</h3>
+          <div class="review">
+            <p>⭐️⭐️⭐️⭐️⭐️ - Great teacher! Learned a lot.</p>
+            <span>- Student A</span>
+          </div>
+          <div class="review">
+            <p>⭐️⭐️⭐️⭐️ - Very helpful and patient.</p>
+            <span>- Student B</span>
+          </div>
         </div>
       </div>
-    </main>
-
-
-
-    <!-- <div id="profile-container">
-      <div id="img-container">
-        <img src="assets/background-img.jpg" alt="" id="back-img">
-        <img src="assets/profile-img.jpg" alt="" id="profile-img">
-      </div>
-
-      <div id="profile-content">
-        <div id="buttons">
-          <button>Messages</button>
-          <button>Edit Profile</button>
-        </div>
-        <h3 id="profile-name">Muhammad Umer</h3>
-        <h4>
-          <span id="city">Karachi, </span>
-          <span id="country">Pakistan</span>
-        </h4>
-        <div id="skill-badges">
-          <h4>Teaching: <span id="teach">Guitar</span></h4>
-          <h4>Learning: <span id="learn">English</span></h4>
-        </div>
-
-      </div>
-
     </div>
 
-    <div id="user-post-cont">
-      <h3>hello</h3>
+
+
+
+    
+    <!-- modal popup of the testimonial form  -->
+    <!-- FEEDBACK MODAL -->
+    <div id="feedback-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <h2>Leave Your Feedback</h2>
+        <form id="feedback-form">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="John Doe" required />
+
+          <label for="testimonial">Your Feedback</label>
+          <textarea
+            id="testimonial"
+            placeholder="Write your experience..."
+            required
+          ></textarea>
+
+          <!-- Optional star rating -->
+          <!-- <label for="rating">Rating</label>
+      <select id="rating">
+        <option value="5">⭐⭐⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="1">⭐</option>
+      </select> -->
+
+          <button type="submit">Submit Feedback</button>
+        </form>
+      </div>
     </div>
- -->
 
 
 
 
 
-
-  </div>
-
-  <!-- REQUEST CALL MODAL -->
-  <div class="modal-overlay" id="callModal">
+    <!-- REQUEST CALL MODAL -->
+    <!-- <div class="modal-overlay" id="callModal">
     <div class="modal">
       <div class="modal-content">
         <p id="modal-status">Sending request...</p>
         <button id="joinCallBtn" style="display: none;">Join Call</button>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-  <script src="dashboard.js"></script>
-</body>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+    <script src="script.js"></script>
+  </body>
 </html>
