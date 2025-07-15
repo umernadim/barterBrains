@@ -153,7 +153,7 @@ document.querySelectorAll('.request-btn').forEach(btn => {
     callModal.style.display = 'flex';
 
     // Animate in modal
-    gsap.from('.modal', {
+    gsap.from('.callModal', {
       scale: 0.8,
       opacity: 0,
       duration: 0.3
@@ -231,14 +231,16 @@ const totalSlides = document.querySelectorAll(".slide").length;
 const slidesPerMove = 1;
 
 function updateSlider() {
-  const slideWidth = slide.clientWidth + 20; // includes margin
+  if (slide) {
+  const slideWidth = slide.clientWidth + 20; 
   slidesContainer.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+}
 }
 
 function autoSlide() {
   currentIndex += slidesPerMove;
   if (currentIndex > totalSlides - slidesToShow) {
-    currentIndex = 0; // Loop back to start
+    currentIndex = 0; 
   }
   updateSlider();
 }
@@ -247,17 +249,17 @@ function autoSlide() {
 setInterval(autoSlide, 4000);
 }
 
-// testimonial()
+testimonial()
 
 
 
-
-
+// code for Feedvack modal popup 
+function feedbackModal(params) {
+  
 document.addEventListener("DOMContentLoaded", () => {
-
   const leaveFeedbackBtn = document.getElementById('leaveFeedbackBtn');
   const modal = document.getElementById('feedback-modal');
-  const closeBtn = document.querySelector('.close-btn');
+  const closeBtn = document.querySelector('#feedback-modal .close-btn');
   const feedbackForm = document.getElementById('feedback-form');
 
   if (leaveFeedbackBtn && modal) {
@@ -275,10 +277,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.addEventListener('click', (e) => {
-    // If they click *outside* the modal content, close it
-    if (e.target === modal) {
+    if (e.target == modal) {
       modal.style.display = 'none';
     }
   });
 
 });
+}
+
+feedbackModal();
