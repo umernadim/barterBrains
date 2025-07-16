@@ -1,50 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Create Profile | BarterBrains</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Set up | BarterBrains</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-
 </head>
+<body>
 
-<body class="auth-page">
+  <section id="setup-profile">
+    <div id="container">
+      <div id="img-div">
+        <img src="signin-image.jpg" alt="" />
+      </div>
 
-  <div class="auth-container">
-    <!-- Sign up form -->
-    <section class="signup">
-      <div class="container">
-        <div class="signup-content">
-          <div class="signup-form">
-            <h2 class="form-title">Set up your Profile</h2>
-            <form method="POST" class="register-form" id="register-form">
-              <div class="form-group">
-                <label for="skillTeach"><i class="ri-presentation-fill"></i></label>
-                <input type="text" name="skillTeach" id="name" placeholder="Skill you can Teach (English)" />
-              </div>
-              <div class="form-group">
-                <label for="skillLearn"><i class="ri-user-star-fill"></i></label>
-                <input type="text" name="skillLearn" id="name" placeholder="Skill you want to Learn (Guitar)" />
-              </div>
-
-              <div class="form-group form-button">
-                <input type="submit" name="createProfile" id="signup" class="form-submit" value="Save & Continue" />
-              </div>
-            </form>
+      <div id="form-content">
+        <h3>Set up your Profile</h3>
+        <form action="#">
+          <div class="input-group">
+            <i class="ri-presentation-fill"></i>
+            <input type="text" placeholder="Skill you can teach (e.g: Guitar)" required />
           </div>
-          <div class="signup-image">
-            <figure><img src="assets/create-profile-img.png" alt="sing up image"></figure>
-            <a href="signup.html" class="signup-image-link">Back to signup</a>
+          <div class="input-group">
+            <i class="ri-user-5-line"></i>
+            <input type="text" placeholder="Skill you want to learn (e.g: English)" required />
           </div>
+          <button type="submit">Save</button>
+        </form>
+        <div id="links">
+          <span>
+            <a href="#"><i class="ri-arrow-left-line"></i> Go Back</a>
+          </span>
         </div>
       </div>
-    </section>
-  </div>
-
+    </div>
+  </section>
 
 </body>
-
 </html>

@@ -1,49 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Log In | BarterBrains</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | BarterBrains</title>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"rel="stylesheet"/>
 </head>
+<body>
 
-<body class="auth-page">
+  <section id="login">
+    <div id="container">
+      <div id="img-div">
+        <img src="signin-image.jpg" alt="Login Illustration" />
+      </div>
 
-    <!-- Sing in  Form -->
-    <section class="login">
-      <div class="container">
-        <div class="login-content">
-          <div class="login-image">
-            <figure><img src="assets/signin-image.jpg" alt="sing up image"></figure>
-            <a href="signup.html" class="signup-image-link">Create an account!</a>
-            <a href="forgot-password.html" class="forgot-pass-image-link">Forgot password?</a>
+      <div id="form-content">
+        <h3>Login to BarterBrains</h3>
+        <form action="#">
+          <div class="input-group">
+            <i class="ri-mail-line"></i>
+            <input type="email" placeholder="Enter your email" required />
           </div>
-
-          <div class="login-form">
-            <h2 class="form-title">Login to BarterBrains</h2>
-            <form method="POST" class="register-form" id="login-form">
-              <div class="form-group">
-                <label for="your_name"><i class="ri-user-3-fill"></i></label>
-                <input type="text" name="your_name" id="your_name" placeholder="Your Name" />
-              </div>
-              <div class="form-group">
-                <label for="your_pass"><i class="ri-lock-fill"></i></label>
-                <input type="password" name="your_pass" id="your_pass" placeholder="Password" />
-              </div>
-     
-              <div class="form-group form-button">
-                <input type="submit" name="login" id="login" class="form-submit" value="Log in" />
-              </div>
-            </form>
- 
+          <div class="input-group">
+            <i class="ri-lock-2-line"></i>
+            <input type="password" placeholder="Enter your password" required />
           </div>
+          <button type="submit">Login</button>
+        </form>
+        <div id="links">
+          <span>
+            Don't have an account? <a href="#">Signup</a>
+          </span>
+          <span>
+            <a href="#">Forgot password?</a>
+          </span>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
 </body>
-
 </html>
