@@ -49,7 +49,7 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
 }
 
-/* code for testimonial section  */
+/* Testimonials Section */
 .featured-users {
   padding: 80px 5%;
   text-align: center;
@@ -74,7 +74,7 @@ body {
 }
 
 .slide {
-  flex: 0 0 calc(33.333% - 20px);
+  flex: 0 0 calc(33.333% - 20px); 
   margin: 0 10px;
   background: #fff;
   border-radius: 12px;
@@ -106,43 +106,50 @@ body {
   font-size: 16px;
 }
 
+@media (max-width: 768px) {
+  .slide {
+    flex: 0 0 calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .slide {
+    flex: 0 0 100%;
+    padding: 20px 10px;
+  }
+}
 
 
-/* code for footer  */
+
+/* code for footer section */
 footer {
+  min-height: 20vh;
   width: 100%;
-  text-align: center;
-  background: linear-gradient(135deg, #4C8BF5 20%, #74b9ff 100%);
-  padding: 20px 0;
+  padding: 0 4rem;
+}
+
+footer #foot-cont {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #7373733a;
+  padding: 1.5rem 0;
 }
 
 footer p {
-  color: #fff;
-  margin: 5px 0;
   font-size: 14px;
+  color: #807f7f;
 }
 
+footer h4 {
+  color: #807f7f;
+  font-size: 20px;
+  font-weight: 300;
+}
 
 /* responsive design for index page  */
 @media screen and (max-width:768px) {
-  .logo {
-    font-size: 20px;
-  }
-
-  .cta-btn {
-    padding: 8px 18px;
-    border-radius: 25px;
-  }
-
-  .cta-btn.large {
-    padding: 12px 26px;
-    font-size: 18px;
-  }
-
-  .hero {
-    min-height: 80vh;
-  }
-
   .how-it-works {
     padding: 60px 5%;
     text-align: center;
@@ -175,62 +182,22 @@ footer p {
     font-size: 20px;
   }
 
-  /* code for testimonial section  */
-  .featured-users {
-  padding: 80px 5%;
-  text-align: center;
-  position: relative;
-}
+  footer {
+    padding: 0 1.5rem;
+  }
 
-.featured-users h2 {
-  margin-bottom: 40px;
-  font-size: 40px;
-}
+  footer #foot-cont {
+    padding: 2rem 0;
+    gap: 3.5rem;
+  }
 
-.slider {
-  position: relative;
-  max-width: 1000px;
-  margin: 0 auto;
-  overflow: hidden;
-}
+  footer h4 {
+    font-size: 0.9rem;
+  }
 
-.slides {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.slide {
-  flex: 0 0 calc(33.333% - 20px);
-  margin: 0 10px;
-  background: #fff;
-  border-radius: 12px;
-  padding: 30px 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.slide img {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  margin-bottom: 15px;
-  border: 2px solid var(--btn-color);
-}
-
-.slide h3 {
-  margin: 10px 0 5px 0;
-  font-size: 22px;
-}
-
-.slide .skills {
-  font-size: 14px;
-  margin-bottom: 15px;
-  color: #555;
-}
-
-.slide .testimonial {
-  font-style: italic;
-  font-size: 16px;
-}
+  footer #left p {
+    display: none;
+  }
 
 
 }
@@ -431,6 +398,11 @@ footer p {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#suggested-user-header button:hover {
+  background-color: var(--btn-hover-color);
 }
 
 #suggested-user #cards-container {
@@ -809,7 +781,7 @@ footer p {
 
 #login #img-div,
 #signup #img-div,
-#setup-profile #img-div  {
+#setup-profile #img-div {
   width: 50%;
   display: flex;
   align-items: center;
@@ -886,7 +858,7 @@ footer p {
 
 #login form button,
 #signup form button,
-#setup-profile form button{
+#setup-profile form button {
   padding: 10px;
   background-color: var(--btn-color);
   border: none;
@@ -961,7 +933,7 @@ footer p {
 #new-password,
 #verify-code {
   position: relative;
-  height: 100vh; 
+  height: 100vh;
   width: 100%;
 }
 
@@ -1010,7 +982,7 @@ footer p {
 
 #forgot-password p,
 #new-password p,
-#verify-code p{
+#verify-code p {
   font-size: 14px;
   color: #555;
   margin-bottom: 25px;
@@ -1083,23 +1055,24 @@ footer p {
 
 
 @media screen and (max-width: 768px) {
+
   #forgot-password #container,
   #new-password #container,
   #verify-code #container {
-  max-width: 350px;
-}
+    max-width: 350px;
+  }
 
-#forgot-password .input-group i,
-#new-password .input-group i,
-#verify-code .input-group i {
-  font-size: 22px;
-}
+  #forgot-password .input-group i,
+  #new-password .input-group i,
+  #verify-code .input-group i {
+    font-size: 22px;
+  }
 
-#forgot-password .input-group input,
-#new-password .input-group input,
-#verify-code .input-group input {
-  font-size: 18px;
-}
+  #forgot-password .input-group input,
+  #new-password .input-group input,
+  #verify-code .input-group input {
+    font-size: 18px;
+  }
 
 }
 
@@ -1210,8 +1183,8 @@ footer p {
 
 @media screen and (max-width: 768px) {
   #edit-profile #container {
-  max-width: 350px;
-}
+    max-width: 350px;
+  }
 }
 
 

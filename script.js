@@ -221,35 +221,47 @@ profileModalPopup();
 
 // code for testimonial section 
 function testimonial() {
-  
-const slidesContainer = document.querySelector(".slides");
-const slide = document.querySelector(".slide");
+  const slidesContainer = document.querySelector(".slides");
+  const slide = document.querySelector(".slide");
+  const totalSlides = document.querySelectorAll(".slide").length;
 
-let currentIndex = 0;
-const slidesToShow = 3;
-const totalSlides = document.querySelectorAll(".slide").length;
-const slidesPerMove = 1;
+  let currentIndex = 0;
 
-function updateSlider() {
-  if (slide) {
-  const slideWidth = slide.clientWidth + 20; 
-  slidesContainer.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
-}
-}
-
-function autoSlide() {
-  currentIndex += slidesPerMove;
-  if (currentIndex > totalSlides - slidesToShow) {
-    currentIndex = 0; 
+  function getSlidesToShow() {
+    if (window.innerWidth <= 480) {
+      return 1;
+    } else if (window.innerWidth <= 768) {
+      return 2;
+    } else {
+      return 3;
+    }
   }
+
+  function updateSlider() {
+    const slidesToShow = getSlidesToShow();
+    const slideWidth = slide.clientWidth + 20; // margin
+    slidesContainer.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+  }
+
+  function autoSlide() {
+    const slidesToShow = getSlidesToShow();
+    currentIndex++;
+    if (currentIndex > totalSlides - slidesToShow) {
+      currentIndex = 0;
+    }
+    updateSlider();
+  }
+
+  window.addEventListener("resize", () => {
+    updateSlider();
+  });
+
   updateSlider();
+  setInterval(autoSlide, 4000);
 }
 
-// Run every 3 seconds
-setInterval(autoSlide, 4000);
-}
+testimonial();
 
-testimonial()
 
 
 
