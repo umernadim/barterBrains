@@ -782,7 +782,6 @@ footer p {
 
 
 /* code for Login and Sigup page  */
-
 #login,
 #signup,
 #setup-profile {
@@ -890,7 +889,7 @@ footer p {
   padding: 10px;
   background-color: var(--btn-color);
   border: none;
-  color: #fff;
+  color: var(--text-color-light);
   cursor: pointer;
   border-radius: 4px;
   font-size: 16px;
@@ -955,6 +954,155 @@ footer p {
 
 }
 
+
+/* code for forgot password form pages  */
+#forgot-password,
+#new-password,
+#verify-code {
+  position: relative;
+  height: 100vh; 
+  width: 100%;
+}
+
+#forgot-password #container,
+#new-password #container,
+#verify-code #container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--text-color-light);
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+#forgot-password span,
+#new-password span,
+#verify-code span {
+  background: var(--btn-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  border-radius: 50%;
+  font-size: 32px;
+  margin-bottom: 15px;
+}
+
+#forgot-password span i,
+#new-password span i,
+#verify-code span i {
+  color: var(--text-color-light);
+}
+
+/* Headings */
+#forgot-password h3,
+#new-password h3,
+#verify-code h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#forgot-password p,
+#new-password p,
+#verify-code p{
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+#forgot-password form,
+#new-password form,
+#verify-code form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+#forgot-password .input-group,
+#new-password .input-group,
+#verify-code .input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+#forgot-password .input-group i,
+#new-password .input-group i,
+#verify-code .input-group i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 18px;
+}
+
+#forgot-password .input-group input,
+#new-password .input-group input,
+#verify-code .input-group input {
+  width: 100%;
+  padding: 12px 12px 12px 40px;
+  border: none;
+  background: none;
+  border-bottom: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  font-size: 15px;
+  transition: border 0.3s ease;
+}
+
+#forgot-password .input-group input:focus,
+#new-password .input-group input:focus,
+#verify-code .input-group input:focus {
+  border-color: var(--btn-color);
+}
+
+#forgot-password button,
+#new-password button,
+#verify-code button {
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: var(--btn-color);
+  color: var(--text-color-light);
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#forgot-password button:hover,
+#new-password button:hover,
+#verify-code button:hover {
+  background: var(--btn-hover-color);
+}
+
+
+@media screen and (max-width: 768px) {
+  #forgot-password #container,
+  #new-password #container,
+  #verify-code #container {
+  max-width: 350px;
+}
+
+#forgot-password .input-group i,
+#new-password .input-group i,
+#verify-code .input-group i {
+  font-size: 22px;
+}
+
+#forgot-password .input-group input,
+#new-password .input-group input,
+#verify-code .input-group input {
+  font-size: 18px;
+}
+
+}
+
+
 /* code for edit-profile-page  */
 #Edit-profile-container {
   overflow-x: hidden;
@@ -990,7 +1138,7 @@ footer p {
 }
 
 .file-label:hover {
-  background: #3467d6;
+  background: var(--btn-hover-color);
 }
 
 .form-control:focus {
