@@ -8,158 +8,82 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
-    <link
+       <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div
-      id="Edit-profile-container"
-      class="container rounded bg-white mt-5 mb-5"
-      style="max-width: 850px"
-    >
-      <div class="row">
-        <div class="col-12 col-md-3 border-right" id="profile-card">
-          <div
-            class="d-flex flex-column align-items-center text-center p-3 py-5"
-          >
-            <!-- Cover Image -->
-            <img src="assets/profile-background-img.jpg" id="profile-cover" />
-
-            <!-- Profile Image -->
-            <img
-              class="rounded-circle"
-              id="profile-img"
-              src="assets/profile-img.avif"
-            />
-
-            <label class="file-label mt-5">
-              Update Profile
-              <input
-                type="file"
-                id="profileInput"
-                accept="image/*"
-                style="display: none"
-              />
-            </label>
-
-            <label class="file-label mt-2">
-              Update Cover
-              <input
-                type="file"
-                id="coverInput"
-                accept="image/*"
-                style="display: none"
-              />
-            </label>
-          </div>
+      <section id="edit-profile">
+      <div id="container">
+        <!-- Cover Photo -->
+        <div id="cover-wrapper">
+          <img src="assets/profile-background-img.jpg" id="cover-img" alt="Cover Photo" />
+          <label for="coverInput" class="camera-icon cover-camera">
+            <i class="ri-camera-line"></i>
+          </label>
+          <input
+            type="file"
+            id="coverInput"
+            accept="image/*"
+            style="display: none"
+          />
         </div>
 
-        <div class="col-12 col-md-9">
-          <div class="p-3 py-5">
-            <div class="d-flex justify-content-between align-items-center mb-3">
-              <h4 class="text-right">Profile Settings</h4>
+        <!-- Profile Photo -->
+        <div id="profile-wrapper">
+          <img src="assets/profile-img.avif" id="profile-img" alt="Profile Photo" />
+          <label for="profileInput" class="camera-icon profile-camera">
+            <i class="ri-camera-line"></i>
+          </label>
+          <input
+            type="file"
+            id="profileInput"
+            accept="image/*"
+            style="display: none"
+          />
+        </div>
+
+        <!-- Form Fields -->
+        <!-- Form Fields -->
+        <div id="form-container">
+          <form>
+            <div class="input-row">
+              <div class="input-group">
+                <input type="text" placeholder="First Name" required />
+              </div>
+              <div class="input-group">
+                <input type="text" placeholder="Last Name" required />
+              </div>
             </div>
 
-            <!-- ✅ FORM starts here -->
-            <form action="#" method="POST">
-              <div class="row mt-2">
-                <div class="col-md-6">
-                  <label class="labels">First Name</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="First name"
-                    name="first_name"
-                  />
-                </div>
-                <div class="col-md-6">
-                  <label class="labels">Last Name</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Last name"
-                    name="last_name"
-                  />
-                </div>
-              </div>
+            <div class="input-group">
+              <input type="email" placeholder="Email" required />
+            </div>
 
-              <div class="row mt-3">
-                <div class="col-md-12">
-                  <label class="labels">Email ID</label>
-                  <input
-                    type="email"
-                    class="form-control"
-                    placeholder="Enter email"
-                    name="email"
-                  />
-                </div>
-                <div class="col-md-12">
-                  <label class="labels">Education</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="e.g: Bs English"
-                    name="education"
-                  />
-                </div>
+            <div class="input-row">
+              <div class="input-group">
+                <input type="text" placeholder="City" required />
               </div>
+              <div class="input-group">
+                <input type="text" placeholder="Country" required />
+              </div>
+            </div>
 
-              <div class="row mt-3">
-                <div class="col-md-6">
-                  <label class="labels">City</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="City"
-                    name="City"
-                  />
-                </div>
-                <div class="col-md-6">
-                  <label class="labels">Country</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Country"
-                    name="Country"
-                  />
-                </div>
-              </div>
-
-              <!-- ✅ Moved Skills section here -->
-              <div class="row mt-3">
-                <div class="col-md-12">
-                  <label class="labels">Skill you can teach</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="e.g: Guitar, English etc.."
-                    name="teach_skill"
-                  />
-                </div>
-                <div class="col-md-12 mt-3">
-                  <label class="labels">Skill you want to learn</label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="e.g: Guitar, English etc.."
-                    name="learn_skill"
-                  />
-                </div>
-              </div>
-
-              <div class="mt-5 text-center">
-                <button class="btn btn-primary profile-button" type="submit">
-                  Save Profile
-                </button>
-              </div>
-            </form>
-            <!-- ✅ FORM ends here -->
-          </div>
+            <div class="input-group">
+              <input type="text" placeholder="Skill to Teach (e.g: Guitar)" required />
+            </div>
+            <div class="input-group">
+              <input type="text" placeholder="Skill to Learn (e.g: English)" required />
+            </div>
+            <div class="input-group">
+              <textarea placeholder="About" rows="3" required></textarea>
+            </div>
+            <button type="submit">Save Changes</button>
+          </form>
         </div>
       </div>
-    </div>
+    </section>
   </body>
 </html>

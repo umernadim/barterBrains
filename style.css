@@ -117,8 +117,11 @@ footer {
 }
 
 footer p {
-  color: var(--text-color-light);
+  color: #fff;
+  margin: 5px 0;
+  font-size: 14px;
 }
+
 
 /* responsive design for index page  */
 @media screen and (max-width:768px) {
@@ -658,7 +661,6 @@ footer p {
   transition: background 0.3s ease;
 }
 
-
 #profile-modal .modal-buttons button:hover {
   background: var(--btn-hover-color);
 }
@@ -674,7 +676,6 @@ footer p {
   line-height: 1.4;
 }
 
-/* Right side reviews */
 #profile-modal .modal-right {
   flex: 1;
   background: #f8f9fa;
@@ -1104,105 +1105,114 @@ footer p {
 
 
 /* code for edit-profile-page  */
-#Edit-profile-container {
+#edit-profile {
+  position: relative;
+  height: 100%;
+  width: 100%;
   overflow-x: hidden;
 }
 
-#profile-card {
-  position: relative;
+#edit-profile #container {
+  width: 100%;
+  max-width: 500px;
+  margin: 30px auto;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
-#profile-card #profile-cover {
-  width: 180px;
+#edit-profile #cover-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 8px;
+}
+
+#edit-profile #cover-img {
+  width: 80%;
+  height: 150px;
+  object-fit: cover;
   border-radius: 5px;
 }
 
-#profile-card #profile-img {
-  width: 70px;
-  border-radius: 50%;
-  position: absolute;
-  bottom: 74%;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 3px solid #fff;
+#edit-profile #profile-wrapper {
+  position: relative;
+  margin-top: -50px;
 }
 
-.file-label {
+#edit-profile #profile-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--text-color-light);
+}
+
+#edit-profile .camera-icon {
+  position: absolute;
+  background: var(--text-color-light);
+  border-radius: 50px;
+  padding: 5px;
   cursor: pointer;
+  font-size: 18px;
+}
+
+#edit-profile .cover-camera {
+  top: 14px;
+  right: 60px;
+}
+
+#edit-profile .profile-camera {
+  bottom: 0;
+  right: 43%;
+  transform: translateX(50%);
+}
+
+#edit-profile #form-container {
+  padding: 20px;
+}
+
+#edit-profile .input-group {
+  margin-bottom: 15px;
+}
+
+#edit-profile .input-group input,
+#edit-profile .input-group textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+#edit-profile .input-row {
+  display: flex;
+  gap: 10px;
+}
+
+#edit-profile .input-row .input-group {
+  flex: 1;
+}
+
+#edit-profile button[type="submit"] {
   background: var(--btn-color);
   color: var(--text-color-light);
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  display: inline-block;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.file-label:hover {
+#edit-profile button[type="submit"]:hover {
   background: var(--btn-hover-color);
 }
 
-.form-control:focus {
-  box-shadow: none;
-  border-color: var(--btn-color);
+@media screen and (max-width: 768px) {
+  #edit-profile #container {
+  max-width: 350px;
 }
-
-.profile-button {
-  background: var(--btn-color);
-  box-shadow: none;
-  border: none;
 }
-
-.profile-button:hover {
-  background: var(--btn-hover-color)
-}
-
-.profile-button:focus {
-  background: var(--btn-color);
-  box-shadow: none
-}
-
-.profile-button:active {
-  background: var(--btn-color);
-  box-shadow: none
-}
-
-.back:hover {
-  color: var(--btn-hover-color);
-  cursor: pointer
-}
-
-.labels {
-  font-size: 11px
-}
-
-@media (max-width: 768px) {
-  #profile-card #profile-img {
-    position: static;
-    transform: none;
-    display: block;
-    margin: -35px auto 10px auto; 
-  }
-
-  #profile-card #profile-cover {
-    max-width: 100%;
-  }
-
-  #profile-card {
-    margin-bottom: 20px;
-  }
-
-  .file-label {
-    display: block;
-    width: 100%;
-    margin: 5px 0;
-  }
-
-  .p-3.py-5 {
-    padding: 1rem;
-  }
-}
-
-
 
 
 
