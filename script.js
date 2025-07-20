@@ -1,33 +1,3 @@
-// code for user profile
-function userProfileToggle() {
-  const profileLink = document.getElementById("show-profile");
-  const dashboard = document.getElementById("dashboard");
-
-  if (profileLink) {
-    profileLink.addEventListener("click", (e) => {
-      e.preventDefault();
-      dashboard.classList.toggle("active-profile");
-    });
-  }
-}
-
-userProfileToggle();
-
-// code for dashboard-sideBar
-function sideBarToggle() {
-  const menuBtn = document.getElementById("menuBtn");
-  const dashboard = document.getElementById("dashboard");
-
-  if (menuBtn) {
-    menuBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      dashboard.classList.toggle("active-sideBar");
-    });
-  }
-}
-
-sideBarToggle();
-
 // code to run cards in loop of owl-carousel
 function carousel() {
   const carouselCards = [
@@ -102,6 +72,117 @@ carouselCards.forEach((card) => {
 }
 
 carousel();
+
+
+// code for testimonial section 
+function testimonial() {
+  const slidesContainer = document.querySelector(".slides");
+  const slide = document.querySelector(".slide");
+  const totalSlides = document.querySelectorAll(".slide").length;
+
+  let currentIndex = 0;
+
+  function getSlidesToShow() {
+    if (window.innerWidth <= 480) {
+      return 1;
+    } else if (window.innerWidth <= 768) {
+      return 2;
+    } else {
+      return 3;
+    }
+  }
+
+  function updateSlider() {
+    if (!slide) return;
+    const slidesToShow = getSlidesToShow();
+    const slideWidth = slide.clientWidth + 20;
+    slidesContainer.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
+  }
+
+  function autoSlide() {
+    const slidesToShow = getSlidesToShow();
+    currentIndex++;
+    if (currentIndex > totalSlides - slidesToShow) {
+      currentIndex = 0;
+    }
+    updateSlider();
+  }
+
+  window.addEventListener("resize", updateSlider);
+  updateSlider();
+  setInterval(autoSlide, 4000);
+}
+
+document.addEventListener("DOMContentLoaded", testimonial);
+
+
+// code for dashboard-sideBar
+function sideBarToggle() {
+  const menuBtn = document.getElementById("menuBtn");
+  const dashboard = document.getElementById("dashboard");
+
+  if (menuBtn) {
+    menuBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      dashboard.classList.toggle("active-sideBar");
+    });
+  }
+}
+
+sideBarToggle();
+
+
+// Mobile sidebar toggle
+function mobileSideBarToggle() {
+  const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+  const dashboard = document.getElementById("dashboard");
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      dashboard.classList.toggle("show-mobile-sidebar");
+      // 👉 CLOSE profile if sidebar opens
+      dashboard.classList.remove("show-mobile-profile");
+      dashboard.classList.remove("active-profile");
+    });
+  }
+}
+
+mobileSideBarToggle();
+
+
+// code for user profile toggle
+function userProfileToggle() {
+  const profileLink = document.getElementById("show-profile");
+  const dashboard = document.getElementById("dashboard");
+
+  if (profileLink) {
+    profileLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      dashboard.classList.add("show-mobile-profile");
+      dashboard.classList.remove("show-mobile-sidebar");
+      dashboard.classList.add("active-profile");
+    });
+  }
+}
+
+userProfileToggle();
+
+// code for closeProfileBtn 
+function closeProfileBtn() {  
+
+const closeProfileBtn = document.getElementById("closeProfileBtn");
+if (closeProfileBtn) {
+  closeProfileBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    dashboard.classList.remove("show-mobile-profile");
+    dashboard.classList.remove("active-profile");
+  });
+}
+
+}
+closeProfileBtn();
+
 
   // update Profile images
 function updateprofileImages() {
@@ -219,54 +300,8 @@ function profileModalPopup() {
 profileModalPopup();
 
 
-// code for testimonial section 
-function testimonial() {
-  const slidesContainer = document.querySelector(".slides");
-  const slide = document.querySelector(".slide");
-  const totalSlides = document.querySelectorAll(".slide").length;
-
-  let currentIndex = 0;
-
-  function getSlidesToShow() {
-    if (window.innerWidth <= 480) {
-      return 1;
-    } else if (window.innerWidth <= 768) {
-      return 2;
-    } else {
-      return 3;
-    }
-  }
-
-  function updateSlider() {
-    const slidesToShow = getSlidesToShow();
-    const slideWidth = slide.clientWidth + 20; // margin
-    slidesContainer.style.transform = `translateX(-${slideWidth * currentIndex}px)`;
-  }
-
-  function autoSlide() {
-    const slidesToShow = getSlidesToShow();
-    currentIndex++;
-    if (currentIndex > totalSlides - slidesToShow) {
-      currentIndex = 0;
-    }
-    updateSlider();
-  }
-
-  window.addEventListener("resize", () => {
-    updateSlider();
-  });
-
-  updateSlider();
-  setInterval(autoSlide, 4000);
-}
-
-testimonial();
-
-
-
-
 // code for Feedvack modal popup 
-function feedbackModal(params) {
+function feedbackModal() {
   
 document.addEventListener("DOMContentLoaded", () => {
   const leaveFeedbackBtn = document.getElementById('leaveFeedbackBtn');
