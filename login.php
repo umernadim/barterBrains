@@ -48,7 +48,7 @@ include "config.php";
         </div>
 
         <?php
-     
+
         if (isset($_POST['login'])) {
           $email = mysqli_real_escape_string($connect, $_POST['email']);
           $password = mysqli_real_escape_string($connect, md5($_POST['password']));
@@ -56,18 +56,18 @@ include "config.php";
           $query = "SELECT * FROM users WHERE email = '{$email}' AND password = '{$password}'";
           $result = mysqli_query($connect, $query);
 
-         if(mysqli_num_rows($result) > 0) {
-          $row = mysqli_fetch_assoc($result);
-           $_SESSION["first_name"] = $row['first_name'];
+          if (mysqli_num_rows($result) > 0) {
+            $row = mysqli_fetch_assoc($result);
+            $_SESSION["first_name"] = $row['first_name'];
             $_SESSION["email"] = $row['email'];
             $_SESSION["user_id"] = $row['id'];
 
-            header('Location:dashboard.html');
+            header('Location:dashboard.php');
             exit;
-        } else {
-          echo "<div>Invalid login credentials.</div>";
+          } else {
+            echo "<div>Invalid login credentials.</div>";
+          }
         }
- }
 
         ?>
 
