@@ -284,7 +284,7 @@ footer h4 {
   justify-content: space-between;
   width: 100%;
   margin-bottom: 30px;
-  color: #4C8BF5;
+  color: var(--btn-color);
 }
 
 #sidebar-header i {
@@ -321,7 +321,7 @@ footer h4 {
 }
 
 #sidebar a:hover {
-  color: #3467d6;
+  color: var(--btn-hover-color);
 }
 
 #dashboard.active-sideBar #sidebar h2,
@@ -715,7 +715,7 @@ footer h4 {
 }
 
 #profile-modal .modal-content {
-  background: #fff;
+  background: var(--text-color-light);
   width: 90%;
   max-width: 800px;
   max-height: 90vh;
@@ -981,7 +981,7 @@ footer h4 {
 #setup-profile .input-group {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #333;
+  border-bottom: 1px solid #999;
   padding: 5px 0;
 }
 
@@ -989,7 +989,7 @@ footer h4 {
 #signup .input-group i,
 #setup-profile .input-group i {
   margin-right: 10px;
-  color: #333;
+  color: #999;
   font-size: 18px;
 }
 
@@ -1039,6 +1039,10 @@ footer h4 {
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+
+#links span{
+  color: #999;
 }
 
 #links a {
@@ -1236,21 +1240,58 @@ footer h4 {
 }
 
 
+
 /* code for edit-profile-page  */
-#edit-profile {
+.edit-profile-pg{
   position: relative;
   height: 100%;
   width: 100%;
   overflow-x: hidden;
 }
 
+.edit-profile-pg nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  background: linear-gradient(135deg, #4C8BF5 20%, #74b9ff 100%);
+  /* border-radius: 10px; */
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); */
+  color: var(--text-color-light);
+  height: 80px;
+}
+
+.edit-profile-pg nav img{
+  width: 60px;
+  border-radius: 50px;
+}
+
+.edit-profile-pg nav #nav-left{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.edit-profile-pg nav h4{
+  font-weight: 400;
+}
+
+.edit-profile-pg nav a{
+  color: var(--text-color-light);
+  transition: color 0.3s ease;
+}
+
+.edit-profile-pg nav a:hover{
+  color: var(--btn-hover-color);
+}
+
+/* edit profile page form */
 #edit-profile #container {
   width: 100%;
   max-width: 500px;
-  margin: 30px auto;
-  background: #fff;
+  margin: 40px auto;
+  background: var(--text-color-light);
   border-radius: 10px;
-  overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
@@ -1313,7 +1354,8 @@ footer h4 {
 #edit-profile .input-group textarea {
   width: 100%;
   padding: 8px 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #ccc;
+  outline: none;
   border-radius: 4px;
 }
 
@@ -1324,6 +1366,10 @@ footer h4 {
 
 #edit-profile .input-row .input-group {
   flex: 1;
+}
+
+#edit-profile .input-group input:focus{
+  border-color: var(--btn-hover-color);
 }
 
 #edit-profile button[type="submit"] {
