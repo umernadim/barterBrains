@@ -110,14 +110,28 @@
     </div>
 
     <!-- code for user-profile -->
+
+    <?php
+    include "config.php";
+    $user_id = $_SESSION["user_id"];
+
+    $sql = "SELECT first_name, last_name, city, country, profile_photo, cover_photo, teach_skills, learn_skills FROM users WHERE id = {$user_id}";
+
+    $result = mysqli_query($connect, $sql);
+    if (mysqli_num_rows($result) > 0) {
+      $row = mysqli_fetch_assoc($result);
+    }
+    ?>
     <div id="user-profile">
       <div id="profile-close-btn">
         <button id="closeProfileBtn">✖</button>
       </div>
 
       <div id="img-container">
-        <img src="assets/profile-background-img.jpg" alt="" id="back-img" />
-        <img src="assets/profile-img.avif" alt="" id="profile-img" />
+          <img src="uploads/<?= $row['cover_photo']?>" alt="cover-photo" id="back-img" />
+        <div id="profile-box">
+          <img src="uploads/<?= $row['profile_photo']?>" alt="profile-photo" id="profile-img" />
+        </div>
       </div>
 
       <div id="profile-content">
@@ -127,14 +141,19 @@
             <button>Edit Profile</button>
           </a>
         </div>
-        <h3 id="profile-name">M.Umer</h3>
+        <h3 id="profile-name"><?= $row['first_name'] . " " . $row['last_name']; ?></h3>
         <h4>
-          <span id="city">Karachi, </span>
-          <span id="country">Pakistan</span>
+          <span><i class="ri-graduation-cap-fill"></i></span>
+          <span>Web developer</span>
+        </h4>
+        <h4>
+          <span><i class="ri-map-pin-fill"></i></span>
+          <span id="city"><?= $row['city']; ?>, </span>
+          <span id="country"><?= $row['country']; ?></span>
         </h4>
         <div id="skill-badges">
-          <h4>Teaching: <span id="teach">Guitar</span></h4>
-          <h4>Learning: <span id="learn">English</span></h4>
+          <h4>Teaching: <span id="teach"><?= $row['teach_skills']; ?></span></h4>
+          <h4>Learning: <span id="learn"><?= $row['learn_skills']; ?></span></h4>
         </div>
       </div>
     </div>

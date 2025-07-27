@@ -1,4 +1,4 @@
-      <aside id="sidebar">
+          <aside id="sidebar">
         <div id="sidebar-header">
           <h2>BarterBrains</h2>
           <i id="menuBtn" class="ri-menu-3-line"></i>
@@ -31,7 +31,6 @@
           </div>
         </div>
 
-        <div id="more">
           <div id="logout">
             <a href="logout.php">
               <i class="ri-logout-circle-r-line"></i>
@@ -39,13 +38,8 @@
             </a>
             <a href="delete-user.php">
               <i class="ri-delete-bin-4-line"></i>
-              <span>Delete</span>
+              <span>Delete account</span>
             </a>
           </div>
 
-          <h3>
-            <i class="ri-menu-line"></i>
-            <span>More</span>
-          </h3>
-        </div>
       </aside>
