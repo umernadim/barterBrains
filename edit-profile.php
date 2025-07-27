@@ -28,7 +28,7 @@ $user_id = $_SESSION["user_id"];
   <main>
     <nav>
       <div id="nav-left">
-        <img src="assets/profile-img.avif" alt="" />
+        <img src="assets/profile-img.jpg" alt="" />
         <div id="user-info">
           <h4>M.Umer</h4>
           <h4>Profession</h4>
@@ -69,7 +69,8 @@ $user_id = $_SESSION["user_id"];
                 <!-- Profile Photo -->
                 <div id="profile-wrapper">
                  <div id="profile-box">
-                   <img src="uploads/<?= $row['profile_photo']; ?>" id="profile-img" alt="Profile Photo" />
+                   <img src="<?= !empty($row['profile_photo']) ? 'uploads/'.$row['profile_photo'] : 'assets/profile-img.jpg' ?>" id="profile-img" alt="Profile Photo" />
+                   
                  </div>
                   <label for="profileInput" class="camera-icon profile-camera">
                     <i class="ri-camera-line"></i>

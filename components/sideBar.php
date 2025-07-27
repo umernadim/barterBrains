@@ -36,7 +36,7 @@
               <i class="ri-logout-circle-r-line"></i>
               <span>Logout</span>
             </a>
-            <a href="delete-user.php">
+            <a href="delete-user.php" onclick="confirmDelete(event)">
               <i class="ri-delete-bin-4-line"></i>
               <span>Delete account</span>
             </a>

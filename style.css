@@ -479,57 +479,55 @@ footer h4 {
   grid-template-columns: 80px 1fr 300px;
 }
 
-#user-profile #img-container {
+#img-container {
   width: 100%;
   height: 140px;
   position: relative;
   background-color: #f1f1f1;
 }
 
-#img-container #back-img {
+#back-img {
   height: 100%;
   width: 100%;
-  overflow: hidden;
+  object-fit: cover;
   position: absolute;
-  background-size: cover;
 }
 
-#img-container #profile-box{
- background-color: #f1f1f1; 
- position: absolute;
- bottom: -20%;
- left: 50%;
- transform: translate(-50%, 10%);
- border-radius: 50px;
- height: 88px;
- width: 88px;
- border: 2px solid var(--text-color-light);
- display: inline-block;
- overflow: hidden;
+#img-container .profile-box {
+  background-color: #f1f1f1;
+  height: 88px;
+  width: 88px;
+  position: absolute;
+  bottom: -20%;
+  left: 50%;
+  transform: translate(-50%, 10%);
+  border-radius: 50%;
+  border: 2px solid var(--text-color-light);
+  overflow: hidden;
 }
 
 #img-container #profile-img {
-  background-size: cover;
+  height: 100%;
+  width: 100%;
   object-fit: cover;
-  z-index: 9;
 }
 
 #profile-content {
   height: calc(100% - 150px);
   width: 100%;
-  padding: 0 30px;
-  padding-top: 52px;
+  padding: 52px 30px 0;
 }
 
-#profile-content #buttons {
+#buttons {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  justify-content: center;
+  gap: 10px;
 }
 
-#profile-content button {
+#buttons button {
   padding: 8px 16px;
   border-radius: 5px;
-  background: none;
   border: none;
   background-color: var(--btn-color);
   color: var(--text-color-light);
@@ -537,11 +535,11 @@ footer h4 {
   transition: background-color 0.3s ease;
 }
 
-#profile-content button:hover {
+#buttons button:hover {
   background-color: var(--btn-hover-color);
 }
 
-#profile-content h3 {
+#profile-name {
   font-size: 22px;
   text-align: center;
   margin-top: 14px;
@@ -553,23 +551,21 @@ footer h4 {
   text-align: center;
 }
 
-#profile-content #skill-badges {
+#skill-badges {
   margin-top: 15px;
 }
 
-#user-profile #closeProfileBtn {
+#closeProfileBtn {
   position: absolute;
-  z-index: 9;
   right: 15px;
   top: 15px;
-  background-color: none;
-  border: none;
   font-size: 16px;
-  cursor: pointer;
-  background: none;
   background-color: var(--background-color);
+  border: none;
   padding: 3px 6px;
   border-radius: 50%;
+  cursor: pointer;
+  z-index: 9;
 }
 
 

@@ -18,10 +18,11 @@ if (mysqli_num_rows($result) > 0) {
 
 <nav>
   <div id="nav-left">
-    <img src="./uploads/<?= $row['profile_photo']; ?>" alt="" />
+    <img src="<?= !empty($row['profile_photo']) ? './uploads/'.$row['profile_photo'] : './assets/profile-img.jpg' ?>" alt="" />
+
     <div id="user-info">
       <h4><?= $row['first_name']." ".$row['last_name']; ?></h4>
-      <h4><?= $row['profession']; ?></h4>
+      <h4><?= !empty($row['profession']) ? $row['profession'] : 'profession'; ?></h4>
     </div>
   </div>
 
