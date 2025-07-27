@@ -32,7 +32,7 @@
         </div>
 
           <div id="logout">
-            <a href="logout.php">
+            <a href="logout.php" onclick="confirmLogout(event)">
               <i class="ri-logout-circle-r-line"></i>
               <span>Logout</span>
             </a>

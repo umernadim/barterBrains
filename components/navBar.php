@@ -32,7 +32,10 @@ if (mysqli_num_rows($result) > 0) {
   </a>
 
   <!-- Only visible on desktop -->
-  <a href="logout.php" id="logoutLink" class="desktop-only">
+  <!-- <a href="logout.php" id="logoutLink" class="desktop-only">
     Logout <i class="ri-logout-circle-r-line"></i>
-  </a>
+  </a> -->
+
+  <button id="themeBtn">Dark mode</button>
+
 </nav>

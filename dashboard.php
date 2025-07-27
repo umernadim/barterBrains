@@ -148,8 +148,8 @@
         </h4>
         <h4>
           <span><i class="ri-map-pin-fill"></i></span>
-          <span id="city"><?= !empty($row['city']) ? $row['city'] : 'city' ; ?>, </span>
-          <span id="country"><?= !empty($row['country']) ? $row['country'] : 'country' ; ?></span>
+          <span id="city"><?= !empty($row['city']) ? $row['city'] : 'city'; ?>, </span>
+          <span id="country"><?= !empty($row['country']) ? $row['country'] : 'country'; ?></span>
         </h4>
         <div id="skill-badges">
           <h4>Teaching: <span id="teach"><?= $row['teach_skills']; ?></span></h4>
@@ -234,14 +234,27 @@
   <script src="script.js"></script>
 
   <script>
-  function confirmDelete(event) {
-    event.preventDefault(); // prevent default navigation
-    const confirmed = confirm("Are you sure you want to delete your account?");
-    if (confirmed) {
-      window.location.href = "delete-user.php";
+    // function to confirm delete account
+    function confirmDelete(event) {
+      event.preventDefault(); // prevent default navigation
+      const confirmed = confirm("Are you sure you want to delete your account?");
+      if (confirmed) {
+        window.location.href = "delete-user.php";
+      }
     }
-  }
-</script>
+
+    // function to confirm logout account
+    function confirmLogout(event) {
+      event.preventDefault(); 
+      const confirmed = confirm("Are you sure you want to logout your account?");
+      if (confirmed) {
+        window.location.href = "logout.php";
+      }
+    }
+
+
+
+  </script>
 
 
 </body>

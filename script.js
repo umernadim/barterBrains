@@ -320,3 +320,23 @@ function feedbackModal() {
 }
 
 feedbackModal();
+
+
+
+const themeBtn = document.getElementById('themeBtn');
+const currentTheme = localStorage.getItem('theme');
+
+if (currentTheme === 'dark') {
+  document.body.classList.add('dark');
+  themeBtn.textContent = 'Light mode';
+}
+
+themeBtn.addEventListener('click',() =>{
+  console.log('hello')
+  document.body.classList.toggle('dark');
+  const isDark = document.body.classList.contains('dark');
+
+  localStorage.setItem('theme', isDark ? 'dark': 'light');
+  themeBtn.textContent = isDark ? 'Light mode': 'Dark mode';
+
+})
