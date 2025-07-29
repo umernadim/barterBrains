@@ -22,6 +22,7 @@
     include "components/navBar.php"
     ?>
 
+
     <!-- code for sideBar  -->
     <?php
     include "components/sideBar.php"

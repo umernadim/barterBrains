@@ -63,76 +63,76 @@
           </div>
         </div>
       </section>
- 
 
-    <!-- HOW IT WORKS -->
-    <section class="how-it-works">
-      <h2>How It Works</h2>
-      <div class="steps">
-        <div class="step">
-          <h3>1. Create Profile</h3>
-          <p>Add what you can teach and what you want to learn.</p>
+      <!-- HOW IT WORKS -->
+      <section class="how-it-works">
+        <h2>How It Works</h2>
+        <div class="steps">
+          <div class="step">
+            <h3>1. Create Profile</h3>
+            <p>Add what you can teach and what you want to learn.</p>
+          </div>
+          <div class="step">
+            <h3>2. Get Matches</h3>
+            <p>We find people who want to swap skills with you.</p>
+          </div>
+          <div class="step">
+            <h3>3. Request Live Call</h3>
+            <p>Chat live, learn together, grow together.</p>
+          </div>
         </div>
-        <div class="step">
-          <h3>2. Get Matches</h3>
-          <p>We find people who want to swap skills with you.</p>
-        </div>
-        <div class="step">
-          <h3>3. Request Live Call</h3>
-          <p>Chat live, learn together, grow together.</p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- FEATURED USERS / TESTIMONIALS -->
-    <section class="featured-users">
-      <h2>What Our Users Say</h2>
-      <div class="slider">
-        <div class="slides">
-          <div class="slide">
-            <img src="assets/profile-img.avif" alt="User" />
-            <h3>M.Umer</h3>
-            <p class="skills">Teaches: Guitar | Learns: English</p>
-            <p class="testimonial">
-              “BarterBrains helped me find amazing people to learn English while
-              teaching guitar. Perfect match!”
-            </p>
-          </div>
-          <div class="slide">
-            <img src="assets/profile-img.avif" alt="User" />
-            <h3>Sarah A.</h3>
-            <p class="skills">Teaches: Yoga | Learns: Photography</p>
-            <p class="testimonial">
-              “I exchanged my yoga lessons for photography tips. Loved how easy
-              it is!”
-            </p>
-          </div>
-          <div class="slide">
-            <img src="assets/profile-img.avif" alt="User" />
-            <h3>David K.</h3>
-            <p class="skills">Teaches: Coding | Learns: Cooking</p>
-            <p class="testimonial">
-              “Sharing skills without money — best thing ever. Highly
-              recommended!”
-            </p>
-          </div>
-          <div class="slide">
-            <img src="assets/profile-img.avif" alt="User" />
-            <h3>Emma L.</h3>
-            <p class="skills">Teaches: French | Learns: Web Design</p>
-            <p class="testimonial">
-              “A perfect way to swap skills and meet inspiring people.”
-            </p>
+      <!-- FEATURED USERS / TESTIMONIALS -->
+      <section class="featured-users">
+        <h2>What Our Users Say</h2>
+        <div class="slider">
+          <div class="slides">
+            <div class="slide">
+              <img src="assets/profile-img.jpg" alt="User" />
+              <h3>M.Umer</h3>
+              <p class="skills">Teaches: Guitar | Learns: English</p>
+              <p class="testimonial">
+                “BarterBrains helped me find amazing people to learn English
+                while teaching guitar. Perfect match!”
+              </p>
+            </div>
+            <div class="slide">
+              <img src="assets/profile-img.jpg" alt="User" />
+              <h3>Sarah A.</h3>
+              <p class="skills">Teaches: Yoga | Learns: Photography</p>
+              <p class="testimonial">
+                “I exchanged my yoga lessons for photography tips. Loved how
+                easy it is!”
+              </p>
+            </div>
+            <div class="slide">
+              <img src="assets/profile-img.jpg" alt="User" />
+              <h3>David K.</h3>
+              <p class="skills">Teaches: Coding | Learns: Cooking</p>
+              <p class="testimonial">
+                “Sharing skills without money — best thing ever. Highly
+                recommended!”
+              </p>
+            </div>
+            <div class="slide">
+              <img src="assets/profile-img.jpg" alt="User" />
+              <h3>Emma L.</h3>
+              <p class="skills">Teaches: French | Learns: Web Design</p>
+              <p class="testimonial">
+                “A perfect way to swap skills and meet inspiring people.”
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!---- code for footer-section ---->
-   <?php
-   include "components/footer.php";
-   ?>
-   </main>
+      <!---- code for footer-section ---->
+      <?php
+  include "components/footer.php"; 
+      ?>
+
+    </main>
     <!-- JAVASCRIPT FILES -->
     <script src="script.js"></script>
     <script src="js/jquery.min.js"></script>

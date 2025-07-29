@@ -15,7 +15,6 @@ if (mysqli_num_rows($result) > 0) {
 }
 ?>
 
-
 <nav>
   <div id="nav-left">
     <img src="<?= !empty($row['profile_photo']) ? './uploads/'.$row['profile_photo'] : './assets/profile-img.jpg' ?>" alt="" />
@@ -31,11 +30,6 @@ if (mysqli_num_rows($result) > 0) {
     <i class="ri-menu-line"></i>
   </a>
 
-  <!-- Only visible on desktop -->
-  <!-- <a href="logout.php" id="logoutLink" class="desktop-only">
-    Logout <i class="ri-logout-circle-r-line"></i>
-  </a> -->
-
-  <button id="themeBtn">Dark mode</button>
+  <button id="themeBtn">Dark mode <i class="ri-sun-line"></i></button>
 
 </nav>

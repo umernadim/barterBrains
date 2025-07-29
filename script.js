@@ -321,22 +321,24 @@ function feedbackModal() {
 
 feedbackModal();
 
+// function to chnage themee
+function changeTheme() {
+const themeBtn = document.getElementById("themeBtn");
+const dashboard = document.getElementById("dashboard");
 
+themeBtn.addEventListener('click', () => {
+  dashboard.classList.toggle('dark');
+  
+  const isDark = dashboard.classList.contains('dark');
 
-const themeBtn = document.getElementById('themeBtn');
-const currentTheme = localStorage.getItem('theme');
+  if (isDark) {
+    themeBtn.innerHTML = `Light Mode <i class="ri-moon-clear-fill"></i>`;
+  } else {
+    themeBtn.innerHTML = `Dark Mode <i class="ri-sun-fill"></i>`;
+  }
 
-if (currentTheme === 'dark') {
-  document.body.classList.add('dark');
-  themeBtn.textContent = 'Light mode';
+});
+
 }
 
-themeBtn.addEventListener('click',() =>{
-  console.log('hello')
-  document.body.classList.toggle('dark');
-  const isDark = document.body.classList.contains('dark');
-
-  localStorage.setItem('theme', isDark ? 'dark': 'light');
-  themeBtn.textContent = isDark ? 'Light mode': 'Dark mode';
-
-})
+changeTheme();
