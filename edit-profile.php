@@ -25,7 +25,7 @@ $user_id = $_SESSION["user_id"];
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body class="edit-profile-pg">
+  <body class="edit-profile-pg changeTheme">
     <main>
       <nav>
         <div id="nav-left">
@@ -227,5 +227,7 @@ $user_id = $_SESSION["user_id"];
     include "components/footer.php";
     ?>
     </main>
+
+    <script src="script.js"></script>
   </body>
 </html>

@@ -16,7 +16,7 @@
 </head>
 
 <body>
-  <div id="dashboard">
+  <div id="dashboard" class="changeTheme">
     <!-- code for NavBar  -->
     <?php
     include "components/navBar.php"
@@ -206,18 +206,35 @@
       <div class="modal-content">
         <span class="close-btn">&times;</span>
         <h2>Leave Your Feedback</h2>
-        <form id="feedback-form">
+
+        <form id="feedback-form" action="submit-feedback.php" method="POST">
+          <!-- Hidden: user_id -->
+          <input type="hidden" name="user_id" value="<?= $_SESSION['user_id']; ?>" />
+
           <label for="name">Your Name</label>
-          <input type="text" id="name" placeholder="Your name" value="<?= $_SESSION['first_name']; ?>" required />
+          <input type="text" value="<?= $_SESSION['first_name']; ?>" readonly />
 
           <label for="testimonial">Your Feedback</label>
-          <textarea
-            id="testimonial"
-            placeholder="Write your experience..."
-            required></textarea>
-          <button type="submit">Submit Feedback</button>
+          <textarea name="comment" id="testimonial" placeholder="Write your experience..." required></textarea>
+
+          <label for="rating">Rating</label>
+          <select name="rating" id="rating" required>
+            <option value="">Select Rating</option>
+            <option value="5">🌟🌟🌟🌟🌟</option>
+            <option value="4">🌟🌟🌟🌟</option>
+            <option value="3">🌟🌟🌟</option>
+            <option value="2">🌟🌟</option>
+            <option value="1">🌟</option>
+          </select>
+
+          <button type="submit" name="submit">Submit Feedback</button>
         </form>
       </div>
+    </div>
+
+        <!-- Code to show message popup after feedback -->
+    <div id="toast">
+        <div id="sample-toast" class="toast">Thanks for your feedback! 🙌</div>
     </div>
 
     <!-- REQUEST CALL MODAL -->
@@ -246,16 +263,27 @@
 
     // function to confirm logout account
     function confirmLogout(event) {
-      event.preventDefault(); 
+      event.preventDefault();
       const confirmed = confirm("Are you sure you want to logout your account?");
       if (confirmed) {
         window.location.href = "logout.php";
       }
     }
-
-
-
   </script>
+
+<?php if (isset($_SESSION['feedback_success'])): ?>
+    <script>
+        window.onload = function () {
+            const toast = document.getElementById('sample-toast');
+            toast.classList.add('show');
+
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        };
+    </script>
+    <?php unset($_SESSION['feedback_success']); ?>
+<?php endif; ?>
 
 
 </body>

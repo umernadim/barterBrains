@@ -1,10 +1,11 @@
 :root {
   --text-color: #2B2B2B;
   --text-color-light: #ffffff;
+  --text-hover-color: #3467d6;
   --shadow-color: rgba(1, 1, 1, 0.5);
   --btn-txt-color: #ffffff;
   --btn-color: #93c0f8;
-  --btn-hover-color: #7eb4f6; 
+  --btn-hover-color: #7eb4f6;
   --popup-bg-color: rgba(160, 180, 215, 0.285);
 }
 
@@ -27,10 +28,10 @@
   color: var(--text-color);
 }
 
-#dashboard.dark {
+.changeTheme.dark {
 
   /* background: url(https://i.pinimg.com/1200x/82/fb/3d/82fb3df393b67f734aa3088d43af13cb.jpg) no-repeat center center/cover; */
-  
+
   background: url(https://i.pinimg.com/1200x/15/fb/ad/15fbade246905bb2351d99c0c144ecd1.jpg) no-repeat center center/cover;
 }
 
@@ -42,10 +43,9 @@ body {
   /* background: url(https://i.pinimg.com/736x/19/74/86/19748609668c0a484c02205e6aef9826.jpg) no-repeat center center/cover; */
 }
 
-#dashboard{
+.changeTheme {
   background: url(https://i.pinimg.com/736x/97/72/1c/97721c51c86a499b714d5ed2db50eeac.jpg) no-repeat center center/cover;
   transition: background 0.3s ease;
-
 }
 
 
@@ -174,12 +174,12 @@ footer h4 {
   font-weight: 300;
 }
 
-footer #foot-cont #right{
+footer #foot-cont #right {
   text-align: right;
 }
 
 footer #foot-cont #right a,
-footer #foot-cont #right i{
+footer #foot-cont #right i {
   font-size: 18px;
   color: #4C8BF5;
 }
@@ -302,7 +302,7 @@ footer #foot-cont #right i{
   font-size: 16px;
   cursor: pointer;
   color: var(--text-color);
-  transition: all 0.3s ease; 
+  transition: all 0.3s ease;
 }
 
 #dashboard nav button i {
@@ -311,7 +311,7 @@ footer #foot-cont #right i{
 }
 
 #dashboard nav button:hover {
-  color: #3467d6;
+  color: var(--text-hover-color);
 }
 
 /* === Content Boxes === */
@@ -359,6 +359,7 @@ footer #foot-cont #right i{
 
 #sidebar a {
   text-decoration: none;
+  color: red;
 }
 
 #sidebar a span {
@@ -565,7 +566,7 @@ footer #foot-cont #right i{
   padding: 52px 30px 0;
 }
 
-#profile-content  #buttons {
+#profile-content #buttons {
   display: flex;
   justify-content: center;
   gap: 15px;
@@ -586,7 +587,7 @@ footer #foot-cont #right i{
   border: 1.5px solid var(--text-color);
 }
 
-#profile-content  #buttons button:nth-child(1):hover {
+#profile-content #buttons button:nth-child(1):hover {
   background-color: var(--btn-hover-color);
 }
 
@@ -632,7 +633,7 @@ footer #foot-cont #right i{
     width: 94vw;
   }
 
-  #dashboard nav button{
+  #dashboard nav button {
     display: none;
   }
 
@@ -829,7 +830,7 @@ footer #foot-cont #right i{
   transition: all 0.3s ease;
 }
 
-#profile-modal .modal-buttons button:nth-child(2){
+#profile-modal .modal-buttons button:nth-child(2) {
   background: none;
   border: 1.5px solid var(--text-color);
 }
@@ -838,7 +839,7 @@ footer #foot-cont #right i{
   background: var(--btn-hover-color);
 }
 
-#profile-modal .modal-buttons button:nth-child(2):hover{
+#profile-modal .modal-buttons button:nth-child(2):hover {
   border: 1.5px solid var(--btn-hover-color);
 }
 
@@ -904,7 +905,7 @@ footer #foot-cont #right i{
 .modal .modal-content {
   box-shadow: 0 4px 12px var(--shadow-color);
   max-width: 500px;
-  margin: 10% auto;
+  margin: 3% auto;
   padding: 30px;
   border-radius: 10px;
   position: relative;
@@ -924,7 +925,8 @@ footer #foot-cont #right i{
 
 .modal .modal-content input,
 .modal .modal-content textarea,
-.modal .modal-content select {
+.modal .modal-content select,
+.modal .modal-content select option {
   width: 100%;
   padding: 10px;
   border: 1px solid var(--text-color);
@@ -959,6 +961,30 @@ footer #foot-cont #right i{
   font-size: 24px;
   cursor: pointer;
 }
+
+/* Code to show message popup after feedback */
+#toast {
+  position: fixed;
+  top: 8%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+.toast {
+  background-color: var(--btn-color);
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 10px;
+  opacity: 0;
+  transition: opacity 0.5s;
+  box-shadow: 0 0 14px var(--shadow-color);
+}
+
+.toast.show {
+  opacity: 1;
+}
+
 
 @media screen and (max-width: 768px) {
 
@@ -1342,8 +1368,12 @@ footer #foot-cont #right i{
   transition: color 0.3s ease;
 }
 
+.edit-profile-pg nav i {
+  color: inherit;
+}
+
 .edit-profile-pg nav a:hover {
-  color: var(--btn-hover-color);
+  color: var(--text-hover-color);
 }
 
 /* edit profile page form */
