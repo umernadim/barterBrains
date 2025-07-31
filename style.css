@@ -6,7 +6,7 @@
   --btn-txt-color: #ffffff;
   --btn-color: #93c0f8;
   --btn-hover-color: #7eb4f6;
-  --popup-bg-color: rgba(160, 180, 215, 0.285);
+  --popup-bg-color: rgba(101, 129, 176, 0.153);
 }
 
 .dark {
@@ -16,7 +16,7 @@
   --btn-color: rgba(255, 255, 255, 0.397);
   --btn-hover-color: rgba(255, 255, 255, 0.15);
   --shadow-color: rgba(255, 255, 255, 0.235);
-  --popup-bg-color: rgba(45, 56, 88, 0.39);
+  --popup-bg-color: rgba(38, 48, 79, 0.276);
 }
 
 * {
@@ -39,12 +39,12 @@ body {
   height: 100vh;
   width: 100vw;
   overflow-x: hidden;
-
-  /* background: url(https://i.pinimg.com/736x/19/74/86/19748609668c0a484c02205e6aef9826.jpg) no-repeat center center/cover; */
+  
 }
 
 .changeTheme {
-  background: url(https://i.pinimg.com/736x/97/72/1c/97721c51c86a499b714d5ed2db50eeac.jpg) no-repeat center center/cover;
+  background: url(https://i.pinimg.com/736x/19/74/86/19748609668c0a484c02205e6aef9826.jpg) no-repeat center center/cover;
+  /* background: url(https://i.pinimg.com/736x/97/72/1c/97721c51c86a499b714d5ed2db50eeac.jpg) no-repeat center center/cover; */
   transition: background 0.3s ease;
 }
 
@@ -80,6 +80,7 @@ body {
   padding: 80px 5%;
   text-align: center;
   position: relative;
+  justify-content: center !important;
 }
 
 .featured-users h2 {
@@ -92,6 +93,7 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   overflow: hidden;
+  padding: 15px 0;
 }
 
 .slides {
@@ -100,7 +102,7 @@ body {
 }
 
 .slide {
-  flex: 0 0 calc(33.333% - 20px);
+  flex: 0 0 calc(33.333% - 5%);
   margin: 0 10px;
   background: #fff;
   border-radius: 12px;
@@ -113,7 +115,7 @@ body {
   height: 80px;
   border-radius: 50%;
   margin-bottom: 15px;
-  border: 2px solid var(--btn-color);
+  border: 2px solid var(--text-color);
 }
 
 .slide h3 {

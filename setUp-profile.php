@@ -42,7 +42,7 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
 
-  <section id="setup-profile">
+  <section id="setup-profile" class="changeTheme">
     <div id="container">
       <div id="img-div">
         <img src="assets/signin-image.jpg" alt="" />

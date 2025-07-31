@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
 
 <body>
 
-  <section id="signup">
+  <section id="signup" class="changeTheme">
     <div id="container">
       <div id="form-content">
         <h3>Sigup to BarterBrains</h3>

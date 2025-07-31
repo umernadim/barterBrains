@@ -224,7 +224,7 @@ $user_id = $_SESSION["user_id"];
       </section>
 
       <?php
-    include "components/footer.php";
+    include "components/footer.php"; 
     ?>
     </main>
 

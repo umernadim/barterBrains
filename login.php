@@ -19,7 +19,7 @@ include "config.php";
 
 <body>
 
-  <section id="login">
+  <section id="login" class="changeTheme">
     <div id="container">
       <div id="img-div">
         <img src="assets/signin-image.jpg" alt="Login Illustration" />
@@ -59,6 +59,7 @@ include "config.php";
           if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
             $_SESSION["first_name"] = $row['first_name'];
+            $_SESSION["last_name"] = $row['last_name'];
             $_SESSION["email"] = $row['email'];
             $_SESSION["user_id"] = $row['id'];
 

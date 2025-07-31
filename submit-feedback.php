@@ -5,9 +5,8 @@ include "config.php";
 if (isset($_POST['submit'])) {
     $user_id = mysqli_real_escape_string($connect, $_POST['user_id']);
     $comment = mysqli_real_escape_string($connect, $_POST['comment']);
-    $rating = mysqli_real_escape_string($connect, $_POST['rating']);
 
-    $sql = "INSERT INTO reviews(user_id, comment, rating) VALUES ($user_id, '$comment', '$rating')";
+    $sql = "INSERT INTO reviews(user_id, comment) VALUES ($user_id, '$comment')";
     $result = mysqli_query($connect, $sql);
 
     if ($result) {

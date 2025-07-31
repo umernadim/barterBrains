@@ -321,30 +321,40 @@ function feedbackModal() {
 
 feedbackModal();
 
-// function to change themee
+// function to change theme
 function changeTheme() {
-  const themeBtn = document.getElementById("themeBtn");
+  const themeBtns = document.querySelectorAll(".themeBtn");
   const changeTheme = document.querySelector(".changeTheme");
   const savedTheme = localStorage.getItem("pagesTheme");
 
+  if (!changeTheme) return; // Exit if the container is missing
+
+  // Apply saved theme
   if (savedTheme === "dark") {
     changeTheme.classList.add("dark");
-    themeBtn.innerHTML = `Light Mode <i class="ri-moon-clear-fill"></i>`;
+    themeBtns.forEach(btn => {
+      btn.innerHTML = `Light Mode <i class="ri-moon-clear-fill"></i>`;
+    });
   } else {
     changeTheme.classList.remove("dark");
-    themeBtn.innerHTML = `Dark Mode <i class="ri-sun-fill"></i>`;
+    themeBtns.forEach(btn => {
+      btn.innerHTML = `Dark Mode <i class="ri-sun-fill"></i>`;
+    });
   }
 
-  themeBtn.addEventListener("click", () => {
-    changeTheme.classList.toggle("dark");
-    const isDark = changeTheme.classList.contains("dark");
+  // Add event listeners to all buttons
+  themeBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      changeTheme.classList.toggle("dark");
+      const isDark = changeTheme.classList.contains("dark");
+      localStorage.setItem("pagesTheme", isDark ? "dark" : "light");
 
-    // Save theme preference
-    localStorage.setItem("pagesTheme", isDark ? "dark" : "light");
-
-    themeBtn.innerHTML = isDark
-      ? `Light Mode <i class="ri-moon-clear-fill"></i>`
-      : `Dark Mode <i class="ri-sun-fill"></i>`;
+      themeBtns.forEach(button => {
+        button.innerHTML = isDark
+          ? `Light Mode <i class="ri-moon-clear-fill"></i>`
+          : `Dark Mode <i class="ri-sun-fill"></i>`;
+      });
+    });
   });
 }
 

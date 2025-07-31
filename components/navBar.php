@@ -30,6 +30,6 @@ if (mysqli_num_rows($result) > 0) {
     <i class="ri-menu-line"></i>
   </a>
 
-  <button id="themeBtn">Dark mode <i class="ri-sun-line"></i></button>
+  <button class="themeBtn">Dark mode <i class="ri-sun-line"></i></button>
 
 </nav>

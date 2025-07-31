@@ -17,7 +17,7 @@
             </a>
           </div>
           <div class="link">
-            <a href="#"><i class="ri-links-line"> </i> <span>Request</span></a>
+            <a href="#"><i class="ri-notification-3-line"></i><span>Notification</span></a>
           </div>
           <div class="link">
             <a href="#" id="show-profile">
@@ -27,6 +27,11 @@
           <div class="link">
             <a href="#" id="leaveFeedbackBtn">
               <i class="ri-chat-1-line"></i> <span>Leave Feedback</span>
+            </a>
+          </div>
+          <div class="link">
+            <a href="#" class="themeBtn">
+              <i class="ri-sparkling-line"></i> <span>Dark mode</span>
             </a>
           </div>
         </div>

@@ -212,29 +212,24 @@
           <input type="hidden" name="user_id" value="<?= $_SESSION['user_id']; ?>" />
 
           <label for="name">Your Name</label>
-          <input type="text" value="<?= $_SESSION['first_name']; ?>" readonly />
+          <input type="text"
+            value="<?= ($_SESSION['first_name'] ?? '') . ' ' . ($_SESSION['last_name'] ?? '') ?>"
+            readonly />
+            
 
           <label for="testimonial">Your Feedback</label>
           <textarea name="comment" id="testimonial" placeholder="Write your experience..." required></textarea>
 
-          <label for="rating">Rating</label>
-          <select name="rating" id="rating" required>
-            <option value="">Select Rating</option>
-            <option value="5">🌟🌟🌟🌟🌟</option>
-            <option value="4">🌟🌟🌟🌟</option>
-            <option value="3">🌟🌟🌟</option>
-            <option value="2">🌟🌟</option>
-            <option value="1">🌟</option>
-          </select>
-
           <button type="submit" name="submit">Submit Feedback</button>
+          
         </form>
+        
       </div>
     </div>
 
-        <!-- Code to show message popup after feedback -->
+    <!-- Code to show message popup after feedback -->
     <div id="toast">
-        <div id="sample-toast" class="toast">Thanks for your feedback! 🙌</div>
+      <div id="sample-toast" class="toast">Thanks for your feedback! 🙌</div>
     </div>
 
     <!-- REQUEST CALL MODAL -->
@@ -246,6 +241,7 @@
         </div>
       </div>
     </div>
+
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
@@ -271,19 +267,19 @@
     }
   </script>
 
-<?php if (isset($_SESSION['feedback_success'])): ?>
+  <?php if (isset($_SESSION['feedback_success'])): ?>
     <script>
-        window.onload = function () {
-            const toast = document.getElementById('sample-toast');
-            toast.classList.add('show');
+      window.onload = function() {
+        const toast = document.getElementById('sample-toast');
+        toast.classList.add('show');
 
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
-        };
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3000);
+      };
     </script>
     <?php unset($_SESSION['feedback_success']); ?>
-<?php endif; ?>
+  <?php endif; ?>
 
 
 </body>
