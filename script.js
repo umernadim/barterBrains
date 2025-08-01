@@ -333,12 +333,12 @@ function changeTheme() {
   if (savedTheme === "dark") {
     changeTheme.classList.add("dark");
     themeBtns.forEach(btn => {
-      btn.innerHTML = `Light Mode <i class="ri-moon-clear-fill"></i>`;
+      btn.innerHTML = `<span>Light mode</span> <i class="ri-moon-clear-line"></i>`;
     });
   } else {
     changeTheme.classList.remove("dark");
     themeBtns.forEach(btn => {
-      btn.innerHTML = `Dark Mode <i class="ri-sun-fill"></i>`;
+      btn.innerHTML = `<span>Dark mode</span> <i class="ri-sun-line"></i>`;
     });
   }
 
@@ -351,8 +351,8 @@ function changeTheme() {
 
       themeBtns.forEach(button => {
         button.innerHTML = isDark
-          ? `Light Mode <i class="ri-moon-clear-fill"></i>`
-          : `Dark Mode <i class="ri-sun-fill"></i>`;
+          ? `<span>Light mode</span> <i class="ri-moon-clear-line"></i>`
+          : `<span>Dark mode</span> <i class="ri-sun-line"></i>`;
       });
     });
   });

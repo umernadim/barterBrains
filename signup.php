@@ -79,7 +79,7 @@ if (isset($_POST['submit'])) {
       </div>
 
       <div id="img-div">
-        <img src="assets/signup-image.jpg" alt="Login Illustration" />
+        <img src="assets/signup-image.png" alt="Login Illustration" />
       </div>
 
     </div>

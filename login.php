@@ -22,7 +22,7 @@ include "config.php";
   <section id="login" class="changeTheme">
     <div id="container">
       <div id="img-div">
-        <img src="assets/signin-image.jpg" alt="Login Illustration" />
+        <img src="assets/signin-image.png" alt="Login Illustration" />
       </div>
 
       <div id="form-content">
