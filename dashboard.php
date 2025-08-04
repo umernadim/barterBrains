@@ -25,97 +25,122 @@
 
     <!-- code for suggested-user  -->
     <div id="suggested-user">
+
+      <?php
+      include "config.php";
+      $user_id = $_SESSION["user_id"];
+
+      // 1. Get current user's teach and learn skills
+      $user_query = mysqli_query($connect, "SELECT teach_skills, learn_skills FROM users WHERE id = $user_id");
+      $user_data = mysqli_fetch_assoc($user_query);
+
+      $user_teach = mysqli_real_escape_string($connect, $user_data['teach_skills']);
+      $user_learn = mysqli_real_escape_string($connect, $user_data['learn_skills']);
+
+      // 2. Get search input
+      $search = '';
+      if (isset($_GET['search'])) {
+        $search = mysqli_real_escape_string($connect, $_GET['search']);
+      }
+
+      // 3. Query matched users
+      $match_sql = "SELECT id, first_name, last_name, profile_photo, teach_skills, learn_skills FROM users 
+                WHERE id != $user_id
+                AND (
+                  teach_skills LIKE '%$user_learn%' OR
+                  learn_skills LIKE '%$user_teach%'
+                )";
+
+      if (!empty($search)) {
+        $match_sql .= " AND (
+      first_name LIKE '%$search%' OR
+      last_name LIKE '%$search%' OR
+      teach_skills LIKE '%$search%' OR
+      learn_skills LIKE '%$search%'
+    )";
+      }
+
+      $match_result = mysqli_query($connect, $match_sql);
+      $matched_ids = [];
+
+      while ($row = mysqli_fetch_assoc($match_result)) {
+        $matched_users[] = $row;
+        $matched_ids[] = $row['id'];
+      }
+
+      // 4. Query suggested users (excluding matched and self)
+      $exclude_ids = implode(',', array_merge([$user_id], $matched_ids));
+      $suggest_sql = "SELECT id, first_name, last_name, profile_photo, teach_skills, learn_skills FROM users 
+                  WHERE id NOT IN ($exclude_ids)";
+
+      if (!empty($search)) {
+        $suggest_sql .= " AND (
+      first_name LIKE '%$search%' OR
+      last_name LIKE '%$search%' OR
+      teach_skills LIKE '%$search%' OR
+      learn_skills LIKE '%$search%'
+    )";
+      }
+
+      $suggest_result = mysqli_query($connect, $suggest_sql);
+      ?>
+
       <div id="suggested-user-header">
-        <h2>Match for you..</h2>
-        <form action="">
-          <input type="text" name="search" value="" placeholder="Search user..." />
+        <?php if (!empty($search)) : ?>
+          <a href="dashboard.php" class="clear-search-btn">← Back to All</a>
+        <?php endif; ?>
+
+        <h2><?= (!empty($matched_users) || mysqli_num_rows($suggest_result) > 0) ? '🎯Best Matches for You..' : '🥺No user found' ?></h2>
+
+        <form action="" method="get">
+          <input type="text" name="search" value="<?= htmlspecialchars($search); ?>" placeholder="Search user..." />
           <button type="submit"><i class="ri-user-search-line"></i></button>
         </form>
       </div>
 
       <div id="cards-container">
-        <?php
-        include "config.php";
-        $user_id = $_SESSION["user_id"];
-
-        $sql = "SELECT first_name, last_name, profile_photo,  teach_skills, learn_skills FROM users WHERE id = {$user_id}";
-
-        $result = mysqli_query($connect, $sql);
-        if (mysqli_num_rows($result) > 0) {
-          while ($row = mysqli_fetch_assoc($result)) {
-
-        ?>
-            <div class="card">
-              <img src="<?= !empty($row['profile_photo']) ? 'uploads/' . $row['profile_photo'] : 'assets/profile-img.jpg' ?>" alt="" />
-              <h3><?= $row['first_name'] . ' ' . $row['last_name']; ?></h3>
-              <p>Teaches: <span id="tech-badge"><?= $row['teach_skills']; ?></span></p>
-              <p>Wants: <span id="Learn-badge"><?= $row['learn_skills'] ?></span></p>
-              <div id="buttons">
-                <button class="request-btn">Connect</button>
-                <button>Profile</button>
-              </div>
+        <?php if (!empty($matched_users)) {  ?>
+          <div id="matching-users">
+            <div class="card-group">
+              <?php foreach ($matched_users as $row) {  ?>
+                <div class="card">
+                  <img src="<?= !empty($row['profile_photo']) ? 'uploads/' . $row['profile_photo'] : 'assets/profile-img.jpg' ?>" alt="" />
+                  <h3><?= $row['first_name'] . ' ' . $row['last_name']; ?></h3>
+                  <p>Teaches: <span id="tech-badge"><?= $row['teach_skills']; ?></span></p>
+                  <p>Wants: <span id="Learn-badge"><?= $row['learn_skills']; ?></span></p>
+                  <div id="buttons">
+                    <button class="request-btn">Connect</button>
+                    <button>Profile</button>
+                  </div>
+                </div>
+              <?php  }; ?>
             </div>
-
-        <?php
-          }
-        }
-        ?>
-
-        <div class="card">
-          <img src="assets/profile-img.jpg" alt="" />
-          <h3>M.Umer</h3>
-          <p>Teaches: <span id="tech-badge">Guitar</span></p>
-          <p>Wants: <span id="Learn-badge">English</span></p>
-          <div id="buttons">
-            <button>Connect</button>
-            <button>Profile</button>
           </div>
-        </div>
+        <?php  } ?>
 
-        <div class="card">
-          <img src="assets/profile-img.jpg" alt="" />
-          <h3>M.Umer</h3>
-          <p>Teaches: <span id="tech-badge">Guitar</span></p>
-          <p>Wants: <span id="Learn-badge">English</span></p>
-          <div id="buttons">
-            <button>Connect</button>
-            <button>Profile</button>
+        <?php if (mysqli_num_rows($suggest_result) > 0) {   ?>
+          <div id="suggested-users">
+            <h3 class="section-heading">🌐Suggested People..</h3>
+            <div class="card-group">
+              <?php while ($row = mysqli_fetch_assoc($suggest_result)) {   ?>
+                <div class="card">
+                  <img src="<?= !empty($row['profile_photo']) ? 'uploads/' . $row['profile_photo'] : 'assets/profile-img.jpg' ?>" alt="" />
+                  <h3><?= $row['first_name'] . ' ' . $row['last_name']; ?></h3>
+                  <p>Teaches: <span id="tech-badge"><?= $row['teach_skills']; ?></span></p>
+                  <p>Wants: <span id="Learn-badge"><?= $row['learn_skills']; ?></span></p>
+                  <div id="buttons">
+                    <button class="request-btn">Connect</button>
+                    <button>Profile</button>
+                  </div>
+                </div>
+              <?php  } ?>
+            </div>
           </div>
-        </div>
-
-        <div class="card">
-          <img src="assets/profile-img.jpg" alt="" />
-          <h3>M.Umer</h3>
-          <p>Teaches: <span id="tech-badge">Guitar</span></p>
-          <p>Wants: <span id="Learn-badge">English</span></p>
-          <div id="buttons">
-            <button>Connect</button>
-            <button>Profile</button>
-          </div>
-        </div>
-        <div class="card">
-          <img src="assets/profile-img.jpg" alt="" />
-          <h3>M.Umer</h3>
-          <p>Teaches: <span id="tech-badge">Guitar</span></p>
-          <p>Wants: <span id="Learn-badge">English</span></p>
-          <div id="buttons">
-            <button>Connect</button>
-            <button>Profile</button>
-          </div>
-        </div>
-
-        <div class="card">
-          <img src="assets/profile-img.jpg" alt="" />
-          <h3>M.Umer</h3>
-          <p>Teaches: <span id="tech-badge">Guitar</span></p>
-          <p>Wants: <span id="Learn-badge">English</span></p>
-          <div id="buttons">
-            <button>Connect</button>
-            <button>Profile</button>
-          </div>
-        </div>
+        <?php  } ?>
       </div>
+
     </div>
+
 
     <!-- code for user-profile -->
 
@@ -298,6 +323,7 @@
     }
   </script>
 
+<!-- code to show toast after submitting feedback form  -->
   <?php if (isset($_SESSION['feedback_success'])): ?>
     <script>
       window.onload = function() {

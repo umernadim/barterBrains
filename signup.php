@@ -49,7 +49,7 @@ if (isset($_POST['submit'])) {
   <section id="signup" class="changeTheme">
     <div id="container">
       <div id="form-content">
-        <h3>Sigup to BarterBrains</h3>
+        <h3>Signup to BarterBrains</h3>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
           <div class="input-row">
             <div class="input-group">

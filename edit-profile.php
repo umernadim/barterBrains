@@ -10,62 +10,62 @@ $user_id = $_SESSION["user_id"];
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Edit-profile | BarterBrains</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body class="edit-profile-pg changeTheme">
-    <main>
-      <nav>
-        <div id="nav-left">
-          <img src="assets/profile-img.jpg" alt="" />
-          <div id="user-info">
-            <h4>M.Umer</h4>
-            <h4>Profession</h4>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Edit-profile | BarterBrains</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="edit-profile-pg changeTheme">
+  <main>
+    <nav>
+      <div id="nav-left">
+        <img src="assets/profile-img.jpg" alt="" />
+        <div id="user-info">
+          <h4>M.Umer</h4>
+          <h4>Profession</h4>
         </div>
+      </div>
 
-        <!-- Only visible on desktop -->
-        <a href="dashboard.php" id="backTopdb" class="desktop-only">
-          <i class="ri-arrow-left-line"></i> Back to Home
-        </a>
-      </nav>
+      <!-- Only visible on desktop -->
+      <a href="dashboard.php" id="backTopdb" class="desktop-only">
+        <i class="ri-arrow-left-line"></i> Back to Home
+      </a>
+    </nav>
 
-      <section id="edit-profile">
-        <div id="container">
-          <div id="form-container">
-            <?php
+    <section id="edit-profile">
+      <div id="container">
+        <div id="form-container">
+          <?php
           include "config.php";
 
           $sql = "SELECT * FROM users WHERE id ={$user_id}";
           $result = mysqli_query($connect, $sql);
-          if (mysqli_num_rows($result) >
-            0) { $row = mysqli_fetch_assoc($result); ?>
+          if (
+            mysqli_num_rows($result) >
+            0
+          ) {
+            $row = mysqli_fetch_assoc($result); ?>
 
             <form
               action="update-edit-profile.php"
               method="post"
-              enctype="multipart/form-data"
-            >
+              enctype="multipart/form-data">
               <!-- Cover Photo -->
               <div id="cover-wrapper">
                 <div id="cover-box">
                   <img
                     src="uploads/<?= $row['cover_photo']; ?>"
                     id="cover-img"
-                    alt="Cover Photo"
-                  />
+                    alt="Cover Photo" />
                 </div>
                 <label for="coverInput" class="camera-icon cover-camera">
                   <i class="ri-camera-line"></i>
@@ -75,18 +75,16 @@ $user_id = $_SESSION["user_id"];
                   name="cover_photo"
                   id="coverInput"
                   accept="image/*"
-                  style="display: none"
-                />
+                  style="display: none" />
               </div>
 
               <!-- Profile Photo -->
               <div id="profile-wrapper">
                 <div id="profile-box">
                   <img
-                    src="<?= !empty($row['profile_photo']) ? 'uploads/'.$row['profile_photo'] : 'assets/profile-img.jpg' ?>"
+                    src="<?= !empty($row['profile_photo']) ? 'uploads/' . $row['profile_photo'] : 'assets/profile-img.jpg' ?>"
                     id="profile-img"
-                    alt="Profile Photo"
-                  />
+                    alt="Profile Photo" />
                 </div>
                 <label for="profileInput" class="camera-icon profile-camera">
                   <i class="ri-camera-line"></i>
@@ -96,8 +94,7 @@ $user_id = $_SESSION["user_id"];
                   id="profileInput"
                   name="profile_photo"
                   accept="image/*"
-                  style="display: none"
-                />
+                  style="display: none" />
               </div>
 
               <div id="input-fields">
@@ -110,8 +107,7 @@ $user_id = $_SESSION["user_id"];
                       id="fname"
                       value="<?= $row['first_name']; ?>"
                       placeholder="Enter your first name"
-                      required
-                    />
+                      required />
                   </div>
                   <div class="input-group">
                     <label for="lname">Last Name</label>
@@ -121,8 +117,7 @@ $user_id = $_SESSION["user_id"];
                       id="lname"
                       value="<?= $row['last_name']; ?>"
                       placeholder="Enter your last name"
-                      required
-                    />
+                      required />
                   </div>
                 </div>
 
@@ -134,8 +129,7 @@ $user_id = $_SESSION["user_id"];
                     id="email"
                     value="<?= $row['email']; ?>"
                     placeholder="Enter your email"
-                    required
-                  />
+                    required />
                 </div>
 
                 <div class="input-row">
@@ -147,8 +141,7 @@ $user_id = $_SESSION["user_id"];
                       id="city"
                       value="<?= $row['city']; ?>"
                       placeholder="Enter your city"
-                      required
-                    />
+                      required />
                   </div>
                   <div class="input-group">
                     <label for="country">Country</label>
@@ -158,8 +151,7 @@ $user_id = $_SESSION["user_id"];
                       id="country"
                       value="<?= $row['country']; ?>"
                       placeholder="Enter your country"
-                      required
-                    />
+                      required />
                   </div>
                 </div>
 
@@ -171,8 +163,7 @@ $user_id = $_SESSION["user_id"];
                     id="profession"
                     value="<?= $row['profession']; ?>"
                     placeholder="E.g: English Tutor, Developer"
-                    required
-                  />
+                    required />
                 </div>
 
                 <div class="input-group">
@@ -183,8 +174,7 @@ $user_id = $_SESSION["user_id"];
                     id="skill_teach"
                     value="<?= $row['teach_skills']; ?>"
                     placeholder="E.g: Guitar, Programming"
-                    required
-                  />
+                    required />
                 </div>
 
                 <div class="input-group">
@@ -195,8 +185,7 @@ $user_id = $_SESSION["user_id"];
                     id="skill_learn"
                     value="<?= $row['learn_skills']; ?>"
                     placeholder="E.g: English, Video Editing"
-                    required
-                  />
+                    required />
                 </div>
 
                 <div class="input-group">
@@ -206,28 +195,47 @@ $user_id = $_SESSION["user_id"];
                     id="about"
                     rows="3"
                     placeholder="Tell us something about yourself"
-                    required
-                  >
-<?= $row['about']; ?></textarea
-                  >
+                    required>
+<?= $row['about']; ?></textarea>
                 </div>
 
                 <button type="submit" name="save">Save Changes</button>
               </div>
             </form>
 
-            <?php
-            }
+          <?php
+          }
           ?>
-          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <?php
-    include "components/footer.php"; 
+    <?php
+    include "components/footer.php";
     ?>
-    </main>
+  </main>
 
-    <script src="script.js"></script>
-  </body>
+  <script src="script.js"></script>
+
+  <script>
+    // Live preview for profile image
+    document.getElementById('profileInput').addEventListener('change', function(event) {
+      const [file] = event.target.files;
+      if (file) {
+        document.getElementById('profile-img').src = URL.createObjectURL(file);
+      }
+    });
+
+    // Live preview for cover image (this was missing!)
+    document.getElementById('coverInput').addEventListener('change', function(event) {
+      const [file] = event.target.files;
+      if (file) {
+        document.getElementById('cover-img').src = URL.createObjectURL(file);
+      }
+    });
+  </script>
+
+
+</body>
+
 </html>

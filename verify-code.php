@@ -13,6 +13,44 @@ if (!isset($_SESSION['pincode'])) {
 }
 
 
+// code to resend pin code 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require 'vendor/autoload.php'; // if not already included
+
+if (isset($_POST['resendBtn'])) {
+    $newCode = rand(1001, 9999);
+    $_SESSION['pincode'] = $newCode;
+
+    $email = $_SESSION['forgotPasswordEmail'];
+
+    $mail = new PHPMailer(true);
+    try {
+        $mail->isSMTP();
+        $mail->Host       = 'smtp.gmail.com';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = 'itsumernadeem@gmail.com';
+        $mail->Password   = 'tbtw qkoe infs ksjh'; // use env/config in production
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = 587;
+
+        $mail->setFrom('itsumernadeem@gmail.com', 'BarterBrains');
+        $mail->addAddress($email);
+        $mail->isHTML(true);
+        $mail->Subject = 'New Verification Code';
+        $mail->Body    = "Hi,<br><br>Your new verification code is <strong>$newCode</strong>.<br><br>Ignore this email if you didn't request it.";
+
+        $mail->send();
+        echo "<script>alert('A new verification code has been sent to your email.');</script>";
+    } catch (Exception $e) {
+        echo "<script>alert('Failed to resend code. Mailer Error: {$mail->ErrorInfo}');</script>";
+    }
+}
+
+
+
+
+
 if (isset($_POST['verifyBtn'])) {
   $verifyCode = $_POST['verifyCode'];
 
@@ -68,6 +106,8 @@ if (isset($_POST['verifyBtn'])) {
               id="verification-code" />
           </div>
           <button type="submit" name="verifyBtn">Verify Code</button>
+          
+      <button type="submit" name="resendBtn" style="margin-top: 8px;" formnovalidate>Resend Code</button>
         </form>
       </div>
     </div>
