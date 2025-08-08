@@ -30,7 +30,7 @@
       include "config.php";
       $user_id = $_SESSION["user_id"];
 
-      // 1. Get current user's teach and learn skills
+  
       $user_query = mysqli_query($connect, "SELECT teach_skills, learn_skills FROM users WHERE id = $user_id");
       $user_data = mysqli_fetch_assoc($user_query);
 
@@ -110,7 +110,9 @@
                   <p>Wants: <span id="Learn-badge"><?= $row['learn_skills']; ?></span></p>
                   <div id="buttons">
                     <button class="request-btn">Connect</button>
-                    <button>Profile</button>
+                    <a href="user-profile.php?profileId=<?= $row['id']; ?>">
+                      <button>Profile</button>  
+                    </a>
                   </div>
                 </div>
               <?php  }; ?>
@@ -130,7 +132,9 @@
                   <p>Wants: <span id="Learn-badge"><?= $row['learn_skills']; ?></span></p>
                   <div id="buttons">
                     <button class="request-btn">Connect</button>
-                    <button>Profile</button>
+                    <a href="user-profile.php?profileId=<?= $row['id']; ?>">
+                      <button>Profile</button>  
+                    </a>
                   </div>
                 </div>
               <?php  } ?>
@@ -211,53 +215,13 @@
     include "config.php";
     $user_id = $_SESSION["user_id"];
 
-    $sql = "SELECT first_name, last_name, profession, city, country, profile_photo, teach_skills, learn_skills, about FROM users WHERE id = {$user_id}";
+    $sql = "SELECT first_name, last_name, profession, city, country, profile_photo, teach_skills, learn_skills, about FROM users";
 
     $result = mysqli_query($connect, $sql);
     if (mysqli_num_rows($result) > 0) {
       $row = mysqli_fetch_assoc($result);
     }
     ?>
-
-    <div id="profile-modal">
-      <div class="modal-content">
-        <span class="close-btn">&times;</span>
-        <div class="modal-left">
-          <img src="<?= !empty($row['profile_photo']) ? 'uploads/' . $row['profile_photo'] : 'assets/profile-img.jpg' ?>" alt="Profile Picture" class="profile-pic" />
-          <h2><?= $row['first_name'] . ' ' . $row['last_name']; ?></h2>
-          <h4><?= !empty($row['profession']) ? $row['profession'] : 'profession'; ?></h4>
-
-          <div class="modal-buttons">
-            <button>Message</button>
-            <button>Connect</button>
-          </div>
-
-          <div class="modal-info">
-            <p><strong>Teaches:</strong> <?= $row['teach_skills'] ?></p>
-            <p><strong>Wants:</strong> <?= $row['learn_skills'] ?></p>
-            <p><strong>Location:</strong>
-              <?= !empty($row['city']) && !empty($row['country']) ? $row['city'] . ', ' . $row['country'] : 'city, country'; ?>
-            </p>
-
-            <p>
-              <strong>About:</strong> <?= !empty($row['about']) ? $row['about'] : 'Hey there! i am here to exchange my skill.' ?>
-            </p>
-          </div>
-        </div>
-
-        <div class="modal-right">
-          <h3>Reviews</h3>
-          <div class="review">
-            <p>Great teacher! Learned a lot.</p>
-            <span>- Student A</span>
-          </div>
-          <div class="review">
-            <p>Very helpful and patient.</p>
-            <span>- Student B</span>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- modal popup of the testimonial form  -->
     <div id="feedback-modal" class="modal">
@@ -288,15 +252,6 @@
       <div id="sample-toast" class="toast">Thanks for your feedback! 🙌</div>
     </div>
 
-    <!-- REQUEST CALL MODAL -->
-    <div class="modal-overlay" id="callModal">
-      <div class="callModal">
-        <div class="modal-content">
-          <p id="modal-status">Sending request...</p>
-          <button id="joinCallBtn" style="display: none">Join Call</button>
-        </div>
-      </div>
-    </div>
 
   </div>
 

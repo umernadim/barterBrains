@@ -281,7 +281,7 @@ footer #row2 p:nth-child(2) {
 }
 
 /* === Navbar === */
-#dashboard nav {
+#navBar {
   grid-area: nav;
   display: flex;
   justify-content: space-between;
@@ -293,25 +293,25 @@ footer #row2 p:nth-child(2) {
   backdrop-filter: blur(10px);
 }
 
-#dashboard nav img {
+#navBar img {
   height: 60px;
   width: 60px;
   border-radius: 50px;
   border: 2px solid var(--text-color);
 }
 
-#dashboard #nav-left {
+#navBar #nav-left {
   display: flex;
   align-items: center;
   gap: 10px;
   position: relative;
 }
 
-#dashboard #nav-left h4 {
+#navBar #nav-left h4 {
   font-weight: 200;
 }
 
-#dashboard nav a {
+#navBar nav a {
   color: var(--text-color);
   text-decoration: none;
   font-weight: 500;
@@ -322,7 +322,7 @@ footer #row2 p:nth-child(2) {
   font-size: 22px;
 }
 
-#dashboard nav button {
+#navBar button {
   border: none;
   background: none;
   font-size: 16px;
@@ -331,12 +331,12 @@ footer #row2 p:nth-child(2) {
   transition: all 0.3s ease;
 }
 
-#dashboard nav button i {
+#navbar button i {
   font-size: 18px;
   color: inherit;
 }
 
-#dashboard nav button:hover {
+#navbar button:hover {
   color: var(--text-hover-color);
 }
 
@@ -542,10 +542,10 @@ footer #row2 p:nth-child(2) {
 }
 
 .section-heading {
-  margin-top: 2rem;
+  margin: 2rem 0;
   font-size: 1.25rem;
   font-weight: bold;
-  color: #444;
+  color: var(--text-color);
 }
 
 #suggested-user .card {
@@ -584,15 +584,14 @@ footer #row2 p:nth-child(2) {
   transition: all 0.3s ease;
 }
 
-#suggested-user .card button:nth-child(2) {
+#suggested-user .card a button {
   background: none;
-  border: 2px solid var(--btn-hover-color);
+  border: 1.5px solid var(--btn-hover-color);
 }
 
 #suggested-user .card button:hover {
   background-color: var(--btn-hover-color);
 }
-
 
 /* code for user-profile  */
 #user-profile {
@@ -719,11 +718,11 @@ footer #row2 p:nth-child(2) {
 
 /* === Mobile Sidebar Overlay === */
 @media screen and (max-width: 768px) {
-  #dashboard nav {
+  #navBar {
     width: 94vw;
   }
 
-  #dashboard nav button {
+  #navBar button {
     display: none;
   }
 
@@ -739,12 +738,12 @@ footer #row2 p:nth-child(2) {
     padding: 15px;
   }
 
-  #dashboard nav {
+  #navBar {
     padding: 0 20px;
     height: 70px;
   }
 
-  #dashboard nav img {
+  #navBar img {
     height: 50px;
     width: 50px;
   }
@@ -841,140 +840,6 @@ footer #row2 p:nth-child(2) {
   }
 
 }
-
-
-/* === suggested user Profile Modal === */
-#profile-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  /* background: var(--popup-bg-color); */
-  backdrop-filter: blur(10px);
-}
-
-#profile-modal .modal-content {
-  backdrop-filter: blur(10px);
-  width: 90%;
-  max-width: 800px;
-  max-height: 90vh;
-  border-radius: 8px;
-  padding: 30px;
-  display: flex;
-  gap: 30px;
-  position: relative;
-  overflow-y: auto;
-  box-shadow: 0 4px 12px var(--shadow-color);
-}
-
-#profile-modal .close-btn {
-  position: absolute;
-  top: 5px;
-  right: 10px;
-  font-size: 28px;
-  cursor: pointer;
-}
-
-#profile-modal .modal-left {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-#profile-modal .modal-left .profile-pic {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 10px;
-}
-
-#profile-modal .modal-left h2 {
-  margin: 10px 0 5px;
-}
-
-#profile-modal .modal-left h4 {
-  margin: 0;
-  font-weight: 400;
-}
-
-#profile-modal .modal-buttons {
-  margin: 20px 0;
-  display: flex;
-  gap: 10px;
-}
-
-#profile-modal .modal-buttons button {
-  padding: 8px 20px;
-  border: none;
-  background: none;
-  background: var(--btn-color);
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-#profile-modal .modal-buttons button:nth-child(2) {
-  background: none;
-  border: 1.5px solid var(--text-color);
-}
-
-#profile-modal .modal-buttons button:hover {
-  background: var(--btn-hover-color);
-}
-
-#profile-modal .modal-buttons button:nth-child(2):hover {
-  border: 1.5px solid var(--btn-hover-color);
-}
-
-#profile-modal .modal-info {
-  text-align: left;
-  width: 100%;
-}
-
-#profile-modal .modal-info p {
-  margin: 8px 0;
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-#profile-modal .modal-right {
-  flex: 1;
-  border-left: 1px solid var(--text-color);
-  padding: 20px;
-  overflow-y: auto;
-  max-height: 100%;
-  scrollbar-width: thin;
-  scrollbar-color: #cecbcb #f1f1f1;
-}
-
-#profile-modal .modal-right h3 {
-  margin-bottom: 15px;
-}
-
-#profile-modal .modal-right .review {
-  padding: 12px 15px;
-  border-radius: 5px;
-  margin-bottom: 10px;
-  box-shadow: 0 2px 6px var(--shadow-color);
-}
-
-#profile-modal .modal-right .review p {
-  margin: 0 0 5px 0;
-  font-size: 14px;
-}
-
-#profile-modal .modal-right .review span {
-  font-size: 12px;
-  color: var(--text-color);
-}
-
 
 
 
@@ -1077,11 +942,6 @@ footer #row2 p:nth-child(2) {
 
 
 @media screen and (max-width: 768px) {
-
-  /* for user profile modal  */
-  #profile-modal .modal-content {
-    flex-direction: column;
-  }
 
   /* for feedback modal  */
   .modal .modal-content {
@@ -1427,7 +1287,8 @@ footer #row2 p:nth-child(2) {
   overflow-x: hidden;
 }
 
-.edit-profile-pg nav {
+.edit-profile-pg nav,
+#profile-pg nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1438,31 +1299,37 @@ footer #row2 p:nth-child(2) {
   backdrop-filter: blur(10px);
 }
 
-.edit-profile-pg nav img {
+.edit-profile-pg nav img,
+#profile-pg nav img {
   width: 60px;
   border-radius: 50px;
 }
 
-.edit-profile-pg nav #nav-left {
+.edit-profile-pg nav #nav-left,
+#profile-pg nav #nav-left {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.edit-profile-pg nav h4 {
+.edit-profile-pg nav h4,
+#profile-pg nav h4 {
   font-weight: 400;
 }
 
-.edit-profile-pg nav a {
+.edit-profile-pg nav a,
+#profile-pg nav a{
   color: var(--text-color);
   transition: color 0.3s ease;
 }
 
-.edit-profile-pg nav i {
+.edit-profile-pg nav i,
+#profile-pg nav i {
   color: inherit;
 }
 
-.edit-profile-pg nav a:hover {
+.edit-profile-pg nav a:hover,
+#profile-pg nav a:hover {
   color: var(--text-hover-color);
 }
 
@@ -1593,6 +1460,10 @@ footer #row2 p:nth-child(2) {
   background: var(--btn-hover-color);
 }
 
+#edit-profile footer a{
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   #edit-profile #container {
     max-width: 350px;
@@ -1600,47 +1471,158 @@ footer #row2 p:nth-child(2) {
 }
 
 
-
-/* MODAL OVERLAY */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+/* code for user-profile page */
+#profile-pg{
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  display: none;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+#profile-pg #profile{
+  width: 100%;
+  height: calc(100%-70px);
+  display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  padding: 3rem 0;
 }
 
-.callModal {
-  background: #fff;
-  padding: 40px;
-  border-radius: 12px;
+.profile-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 900px;
+  width: 100%;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 20px var(--shadow-color);
+}
+
+.profile-left {
+  flex: 1 1 40%;
+  position: relative;
   text-align: center;
-  max-width: 400px;
-  box-shadow: 0 4px 20px var(--shadow-color);
 }
 
-.callModal .modal-content p {
-  font-size: 20px;
-  margin-bottom: 20px;
+.cover-img {
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
-#joinCallBtn {
-  background: #4C8BF5;
-  color: #fff;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 25px;
-  cursor: pointer;
+.cover-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-img {
+  position: absolute;
+  top: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 120px;
+  border: 3px solid var(--text-color);
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-name {
+  margin-top: 70px;
+  font-size: 1.5rem;
   font-weight: 600;
-  font-size: 16px;
-  transition: background 0.3s ease;
+  color: var(--text-color);
 }
 
-#joinCallBtn:hover {
-  background: #3467d6;
+.user-role {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.profile-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.connect-btn,
+.message-btn {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  background-color: var(--btn-color);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.message-btn {
+  background: transparent;
+  border: 2px solid var(--btn-color);
+}
+
+.connect-btn:hover,
+.message-btn:hover {
+  background-color: var(--btn-hover-color);
+}
+
+.message-btn:hover {
+  border-color: var(--btn-hover-color);
+}
+
+.profile-right {
+  flex: 1 1 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile-right h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--text-color);
+  color: var(--text-color);
+}
+
+.details-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  color: var(--text-color-light);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.details-grid strong {
+  color: var(--text-color);
+}
+
+#profile-pg footer a{
+  display: none;
+}
+
+@media screen and (max-width: 678px) {
+  .profile-container {
+  padding: 1.5rem;
+  max-width: 350px;
+  top: 65%;
+  margin-bottom: 2rem;
+}
+
+.profile-right h3 {
+  font-size: 1.4rem;
+}
+
 }

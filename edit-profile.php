@@ -1,13 +1,3 @@
-<?php
-include "config.php";
-session_start();
-if (!isset($_SESSION["email"])) {
-  header("Location: index.php");
-  exit();
-}
-$user_id = $_SESSION["user_id"];
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,20 +16,10 @@ $user_id = $_SESSION["user_id"];
 
 <body class="edit-profile-pg changeTheme">
   <main>
-    <nav>
-      <div id="nav-left">
-        <img src="assets/profile-img.jpg" alt="" />
-        <div id="user-info">
-          <h4>M.Umer</h4>
-          <h4>Profession</h4>
-        </div>
-      </div>
-
-      <!-- Only visible on desktop -->
-      <a href="dashboard.php" id="backTopdb" class="desktop-only">
-        <i class="ri-arrow-left-line"></i> Back to Home
-      </a>
-    </nav>
+ 
+    <?php  
+    include 'components/navBar2.php';
+    ?>
 
     <section id="edit-profile">
       <div id="container">
@@ -196,7 +176,7 @@ $user_id = $_SESSION["user_id"];
                     rows="3"
                     placeholder="Tell us something about yourself"
                     required>
-<?= $row['about']; ?></textarea>
+                    <?= $row['about']; ?></textarea>
                 </div>
 
                 <button type="submit" name="save">Save Changes</button>

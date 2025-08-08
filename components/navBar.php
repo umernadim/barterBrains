@@ -15,7 +15,7 @@ if (mysqli_num_rows($result) > 0) {
 }
 ?>
 
-<nav>
+<nav id="navBar">
   <div id="nav-left">
     <img src="<?= !empty($row['profile_photo']) ? './uploads/'.$row['profile_photo'] : './assets/profile-img.jpg' ?>" alt="" />
 
