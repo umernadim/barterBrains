@@ -2,6 +2,10 @@
 session_start();
 include "config.php";
 
+if (!isset($_SESSION['email'])) {
+    header('location:index.php');
+}
+
 if (isset($_POST['submit'])) {
     $user_id = mysqli_real_escape_string($connect, $_POST['user_id']);
     $comment = mysqli_real_escape_string($connect, $_POST['comment']);

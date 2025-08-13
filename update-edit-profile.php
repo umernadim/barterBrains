@@ -2,6 +2,10 @@
 include "config.php";
 session_start();
 
+if (!isset($_SESSION['email'])) {
+    header('location:index.php');
+}
+
 $user_id = $_SESSION["user_id"];
 
 // cover photo

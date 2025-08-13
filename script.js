@@ -275,3 +275,150 @@ function changeTheme() {
 
 changeTheme();
 
+
+// code to show notification modal
+function notification() {
+  const bell = document.querySelector(".notification-icon");
+  const panel = document.getElementById("notification-panel");
+
+  if (bell) {
+    bell.addEventListener("click", () => {
+      panel.classList.toggle("show");
+    });
+  }
+}
+notification();
+
+// code for admin navBar toggle
+function adminNavBarToggle() {
+  const menuBtn = document.querySelector("#menu i");
+  const sidebar = document.querySelector("#sidebar");
+
+  menuBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("active");
+  });
+
+}
+
+// adminNavBarToggle();
+
+
+const panel = document.getElementById("notification-panel");
+
+// Load notifications on page load
+document.addEventListener("DOMContentLoaded", () => {
+    fetchNotifications();
+});
+
+// Fetch notifications from backend
+function fetchNotifications() {
+    fetch("get_notifications.php")
+        .then(res => res.json())
+        .then(data => {
+            if (data.error) {
+                console.error("Error loading notifications:", data.error);
+                return;
+            }
+
+            panel.innerHTML = "<h4>Notifications</h4>"; // Reset with header
+
+            // Pending requests
+            if (Array.isArray(data.pending)) {
+                data.pending.forEach(n => {
+                    showNotification(n.name, n.time, n.profile_photo, n.id, n.sender_id, "pending");
+                });
+            }
+
+            // Accepted connections
+            if (Array.isArray(data.accepted)) {
+                data.accepted.forEach(n => {
+                    showNotification(n.name, n.time, n.profile_photo, n.id, n.sender_id, "accepted");
+                });
+            }
+        });
+}
+
+// Create notification item
+function showNotification(userName, timeAgo = "Just now", profilePhoto = "assets/profile-img.jpg", requestId, senderId, status = "pending") {
+    const notificationItem = document.createElement("div");
+    notificationItem.className = "notification-item";
+
+    let actionsHTML = "";
+    if (status === "pending") {
+        actionsHTML = `
+            <button class="accept-btn" data-request-id="${requestId}" data-sender-id="${senderId}">Accept</button>
+            <button class="reject-btn" data-request-id="${requestId}">Reject</button>
+        `;
+    } else if (status === "accepted") {
+        actionsHTML = `<span class="accepted-label">✅ Connected</span>`;
+    }
+
+    notificationItem.innerHTML = `
+        <img src="${profilePhoto}" alt="${userName}">
+        <div class="notification-text">
+            <strong>${userName}</strong> wants to connect with you.
+            <div class="notification-actions">${actionsHTML}</div>
+            <small>${timeAgo}</small>
+        </div>
+    `;
+
+    panel.appendChild(notificationItem);
+}
+
+// Handle click events
+document.addEventListener("click", function (e) {
+    if (e.target.classList.contains("accept-btn") || e.target.classList.contains("reject-btn")) {
+        const requestId = e.target.getAttribute("data-request-id");
+        const senderId = e.target.getAttribute("data-sender-id") || null;
+        const action = e.target.classList.contains("accept-btn") ? "accept" : "reject";
+        const notificationItem = e.target.closest(".notification-item");
+
+        fetch("handle_connection_action.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: `request_id=${requestId}&action=${action}`,
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    if (action === "accept") {
+                        // Change notification to connected
+                        const actionsDiv = notificationItem.querySelector(".notification-actions");
+                        if (actionsDiv) actionsDiv.innerHTML = `<span class="accepted-label">✅ Connected</span>`;
+
+                        if (senderId) {
+                            const connectBtn = document.querySelector(`.connect-btn[data-receiver-id="${senderId}"]`);
+                            if (connectBtn) {
+                                connectBtn.outerHTML = '<button class="request-btn connected-btn" disabled>Connected</button>';
+                            }
+                        }
+                    } else {
+                        notificationItem.remove();
+                    }
+                } else {
+                    alert(data.error || "Something went wrong");
+                }
+            });
+    }
+
+    // Send a new connection request
+    if (e.target.classList.contains("connect-btn") && !e.target.disabled) {
+        const button = e.target;
+        const receiverId = button.dataset.receiverId;
+
+        fetch("send_request.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: `receiver_id=${receiverId}`,
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.message) {
+                    button.innerText = "Requested";
+                    button.disabled = true;
+                } else {
+                    alert(data.error || "Something went wrong");
+                }
+            });
+    }
+});

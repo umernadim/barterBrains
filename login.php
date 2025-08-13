@@ -62,8 +62,15 @@ include "config.php";
             $_SESSION["last_name"] = $row['last_name'];
             $_SESSION["email"] = $row['email'];
             $_SESSION["user_id"] = $row['id'];
+            $_SESSION["role"] = $row['role'];
 
-            header('Location:dashboard.php');
+            if($_SESSION['role'] === 'admin'){
+
+              header('Location:admin/admin-panel.php');
+            }else {
+              header('Location:dashboard.php');
+            }
+
             exit;
           } else {
             echo "<div>Invalid login credentials.</div>";

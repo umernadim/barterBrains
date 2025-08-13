@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
               SET teach_skills='{$skillTeach}', learn_skills='{$skillLearn}' 
               WHERE id = {$user_id}";
     if (mysqli_query($connect, $update)) {
-       header('Location:dashboard.php');
+       header('Location:login.php');
        exit;
     }else{
       echo "<div>Failed to update profile: " . mysqli_error($connect) . "</div>";

@@ -18,7 +18,7 @@
   include 'config.php';
   $id = $_GET['profileId'];
 
-  $sql = "SELECT first_name, last_name, profession, city, country, teach_skills, learn_skills, profile_photo, cover_photo FROM users WHERE id = $id";
+  $sql = "SELECT id, first_name, last_name, profession, city, country, teach_skills, learn_skills, profile_photo, cover_photo FROM users WHERE id = $id";
   $result = mysqli_query($connect, $sql);
   if ($row = mysqli_fetch_assoc($result)) {
 
@@ -35,7 +35,33 @@
           <h2 class="user-name"><?= $row['first_name'] . ' ' . $row['last_name']; ?></h2>
           <p class="user-role"><?= $row['profession']; ?></p>
           <div class="profile-buttons">
-            <button class="connect-btn">Connect</button>
+            <?php
+            $currentUserId = $_SESSION['user_id'];
+            $sender_id = (int)$currentUserId;
+            $receiver_id = (int)$row['id'];
+
+            // Check if already connected
+            $checkConnection = "SELECT * FROM connection_requests 
+                    WHERE ((sender_id = $sender_id AND receiver_id = $receiver_id)
+                    OR (sender_id = $receiver_id AND receiver_id = $sender_id))
+                  AND status = 'accepted'";
+            $connResult = mysqli_query($connect, $checkConnection);
+            $isConnected = mysqli_num_rows($connResult) > 0;
+
+            // Check if request already sent and pending
+            $checkPending = "SELECT * FROM connection_requests 
+                    WHERE sender_id = $sender_id AND receiver_id = $receiver_id AND status = 'pending'";
+            $pendingResult = mysqli_query($connect, $checkPending);
+            $alreadyRequested = mysqli_num_rows($pendingResult) > 0;
+            ?>
+
+            <?php if ($isConnected): ?>
+              <button class="request-btn connected-btn" disabled>Connected</button>
+            <?php elseif ($alreadyRequested): ?>
+              <button class="request-btn connect-btn" data-requested="true" disabled>Requested</button>
+            <?php else: ?>
+              <button class="request-btn connect-btn" data-receiver-id="<?= $receiver_id ?>">Connect</button>
+            <?php endif; ?>
             <button class="message-btn">Message</button>
           </div>
         </div>
@@ -60,7 +86,7 @@
   ?>
 
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>

@@ -29,8 +29,8 @@
       <?php
       include "config.php";
       $user_id = $_SESSION["user_id"];
+      $currentUserId = $_SESSION['user_id'];
 
-  
       $user_query = mysqli_query($connect, "SELECT teach_skills, learn_skills FROM users WHERE id = $user_id");
       $user_data = mysqli_fetch_assoc($user_query);
 
@@ -44,12 +44,15 @@
       }
 
       // 3. Query matched users
-      $match_sql = "SELECT id, first_name, last_name, profile_photo, teach_skills, learn_skills FROM users 
-                WHERE id != $user_id
-                AND (
-                  teach_skills LIKE '%$user_learn%' OR
-                  learn_skills LIKE '%$user_teach%'
-                )";
+      $match_sql = "SELECT id, first_name, last_name, profile_photo, teach_skills, learn_skills, role 
+              FROM users 
+              WHERE id != $user_id 
+              AND role != 'admin'
+              AND (
+                  teach_skills LIKE '%$user_learn%' 
+                  OR learn_skills LIKE '%$user_teach%'
+              )";
+
 
       if (!empty($search)) {
         $match_sql .= " AND (
@@ -70,8 +73,9 @@
 
       // 4. Query suggested users (excluding matched and self)
       $exclude_ids = implode(',', array_merge([$user_id], $matched_ids));
-      $suggest_sql = "SELECT id, first_name, last_name, profile_photo, teach_skills, learn_skills FROM users 
-                  WHERE id NOT IN ($exclude_ids)";
+      $suggest_sql = "SELECT id, first_name, last_name, profile_photo, teach_skills, learn_skills 
+      FROM users 
+      WHERE id NOT IN ($exclude_ids) AND role !='admin'";
 
       if (!empty($search)) {
         $suggest_sql .= " AND (
@@ -90,7 +94,7 @@
           <a href="dashboard.php" class="clear-search-btn">← Back to All</a>
         <?php endif; ?>
 
-        <h2><?= (!empty($matched_users) || mysqli_num_rows($suggest_result) > 0) ? '🎯Best Matches for You..' : '🥺No user found' ?></h2>
+        <h2><?= (!empty($matched_users) || mysqli_num_rows($suggest_result) < 0) ? '🎯Best Matches for You..' : '🥺No matched found' ?></h2>
 
         <form action="" method="get">
           <input type="text" name="search" value="<?= htmlspecialchars($search); ?>" placeholder="Search user..." />
@@ -109,9 +113,35 @@
                   <p>Teaches: <span id="tech-badge"><?= $row['teach_skills']; ?></span></p>
                   <p>Wants: <span id="Learn-badge"><?= $row['learn_skills']; ?></span></p>
                   <div id="buttons">
-                    <button class="request-btn">Connect</button>
+                    <?php
+                    $sender_id = (int)$currentUserId;
+                    $receiver_id = (int)$row['id'];
+
+                    // Check if already connected
+                    $checkConnection = "SELECT * FROM connection_requests 
+                    WHERE ((sender_id = $sender_id AND receiver_id = $receiver_id)
+                        OR (sender_id = $receiver_id AND receiver_id = $sender_id))
+                      AND status = 'accepted'";
+                    $connResult = mysqli_query($connect, $checkConnection);
+                    $isConnected = mysqli_num_rows($connResult) > 0;
+
+                    // Check if request already sent and pending
+                    $checkPending = "SELECT * FROM connection_requests 
+                    WHERE sender_id = $sender_id AND receiver_id = $receiver_id AND status = 'pending'";
+                    $pendingResult = mysqli_query($connect, $checkPending);
+                    $alreadyRequested = mysqli_num_rows($pendingResult) > 0;
+                    ?>
+
+                    <?php if ($isConnected): ?>
+                      <button class="request-btn connected-btn" disabled>Connected</button>
+                    <?php elseif ($alreadyRequested): ?>
+                      <button class="request-btn connect-btn" data-requested="true" disabled>Requested</button>
+                    <?php else: ?>
+                      <button class="request-btn connect-btn" data-receiver-id="<?= $receiver_id ?>">Connect</button>
+                    <?php endif; ?>
+
                     <a href="user-profile.php?profileId=<?= $row['id']; ?>">
-                      <button>Profile</button>  
+                      <button>Profile</button>
                     </a>
                   </div>
                 </div>
@@ -131,9 +161,38 @@
                   <p>Teaches: <span id="tech-badge"><?= $row['teach_skills']; ?></span></p>
                   <p>Wants: <span id="Learn-badge"><?= $row['learn_skills']; ?></span></p>
                   <div id="buttons">
-                    <button class="request-btn">Connect</button>
+
+                    <?php
+                    $sender_id = (int)$currentUserId;
+                    $receiver_id = (int)$row['id'];
+
+                    // Check if already connected
+                    $checkConnection = "SELECT * FROM connection_requests 
+                    WHERE ((sender_id = $sender_id AND receiver_id = $receiver_id)
+                        OR (sender_id = $receiver_id AND receiver_id = $sender_id))
+                      AND status = 'accepted'";
+                    $connResult = mysqli_query($connect, $checkConnection);
+                    $isConnected = mysqli_num_rows($connResult) > 0;
+
+                    // Check if request already sent and pending
+                    $checkPending = "SELECT * FROM connection_requests 
+                    WHERE sender_id = $sender_id AND receiver_id = $receiver_id AND status = 'pending'";
+                    $pendingResult = mysqli_query($connect, $checkPending);
+                    $alreadyRequested = mysqli_num_rows($pendingResult) > 0;
+                    ?>
+
+
+                    <?php if ($isConnected): ?>
+                      <button class="request-btn connected-btn" disabled>Connected</button>
+                    <?php elseif ($alreadyRequested): ?>
+                      <button class="request-btn connect-btn" data-requested="true" disabled>Requested</button>
+                    <?php else: ?>
+                      <button class="request-btn connect-btn" data-receiver-id="<?= $receiver_id ?>">Connect</button>
+                    <?php endif; ?>
+
+
                     <a href="user-profile.php?profileId=<?= $row['id']; ?>">
-                      <button>Profile</button>  
+                      <button>Profile</button>
                     </a>
                   </div>
                 </div>
@@ -209,7 +268,6 @@
       </div>
     </div>
 
-    <!-- === User Profile Modal === -->
 
     <?php
     include "config.php";
@@ -247,6 +305,14 @@
       </div>
     </div>
 
+
+    <!-- === notification Modal === -->
+    <div id="notification-panel" class="notification-panel">
+      <h4>Notifications</h4>
+
+
+    </div>
+
     <!-- Code to show message popup after feedback -->
     <div id="toast">
       <div id="sample-toast" class="toast">Thanks for your feedback! 🙌</div>
@@ -278,7 +344,7 @@
     }
   </script>
 
-<!-- code to show toast after submitting feedback form  -->
+  <!-- code to show toast after submitting feedback form  -->
   <?php if (isset($_SESSION['feedback_success'])): ?>
     <script>
       window.onload = function() {

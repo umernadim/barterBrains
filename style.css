@@ -25,7 +25,6 @@
   box-sizing: border-box;
   font-family: Poppins;
   color: var(--text-color);
-  color: var(--text-color);
 }
 
 .changeTheme.dark {
@@ -39,7 +38,7 @@ body {
   height: 100vh;
   width: 100vw;
   overflow-x: hidden;
-  
+
 }
 
 .changeTheme {
@@ -137,11 +136,11 @@ body {
 
 @media (max-width: 768px) {
   .featured-users {
-  padding: 80px 3%;
-}
+    padding: 80px 3%;
+  }
 
   .slide {
-  flex: 0 0 calc(33.333% - 3%);
+    flex: 0 0 calc(33.333% - 3%);
   }
 }
 
@@ -240,27 +239,27 @@ footer #row2 p:nth-child(2) {
     font-size: 20px;
   }
 
-footer {
-  min-height: 40%;
-  width: 100%;
-  padding: 2rem;
-}
+  footer {
+    min-height: 40%;
+    width: 100%;
+    padding: 2rem;
+  }
 
-footer #row2 {
-  justify-content: center;
-}
+  footer #row2 {
+    justify-content: center;
+  }
 
-footer #row2 p:nth-child(1){
-  display: none;
-}
+  footer #row2 p:nth-child(1) {
+    display: none;
+  }
 
-footer #row1 {
-  padding-bottom: 6px;
-}
+  footer #row1 {
+    padding-bottom: 6px;
+  }
 
-footer #row2 p:nth-child(2) {
-  text-align: center;
-}
+  footer #row2 p:nth-child(2) {
+    text-align: center;
+  }
 
 }
 
@@ -393,6 +392,13 @@ footer #row2 p:nth-child(2) {
   color: inherit;
 }
 
+#sidebar .link .badge{
+  color: var(--text-color-light);
+  border-radius: 50%;
+  padding: 3px;
+  background-color: rgb(249, 41, 41);
+}
+
 #sidebar a {
   text-decoration: none;
   display: flex;
@@ -451,8 +457,8 @@ footer #row2 p:nth-child(2) {
 #sidebar .link button:hover,
 #sidebar .link a:hover,
 #sidebar #logout a:hover,
-#sidebar  #menuBtn:hover {
-  color: var(--text-hover-color) ;
+#sidebar #menuBtn:hover {
+  color: var(--text-hover-color);
   transform: scale(1.04);
 }
 
@@ -513,6 +519,7 @@ footer #row2 p:nth-child(2) {
   border-radius: 4px;
   font-size: 14px;
 }
+
 #suggested-user-header .clear-search-btn:hover {
   background-color: var(--btn-hover-color);
 }
@@ -714,6 +721,108 @@ footer #row2 p:nth-child(2) {
   cursor: pointer;
   z-index: 9;
 }
+
+
+
+
+/* Panel Base Styles */
+#notification-panel {
+  position: fixed;
+  top: 100px;
+  right: 30px;
+  width: 320px;
+  height: calc(100vh - 115px);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  overflow-y: auto;
+  padding: 16px;
+  z-index: 1000;
+  scrollbar-width: thin;
+  scrollbar-color: #cecbcb #f1f1f1;
+  transform: translateX(20px);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#notification-panel.show {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+#notification-panel h4 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+}
+
+.notification-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.notification-item img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  object-fit: cover;
+}
+
+.notification-text {
+  flex: 1;
+}
+
+.notification-text strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.notification-actions {
+  margin-top: 6px;
+}
+
+.notification-actions button {
+  padding: 6px 10px;
+  margin-right: 6px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color 0.2s ease;
+}
+
+.accept-btn {
+  background-color: var(--btn-color);
+  color: var(--text-color);
+}
+
+.accept-btn:hover {
+  background-color: var(--btn-hover-color);
+}
+
+.reject-btn {
+  background-color: none;
+  color: var(--text-color);
+  border: 1.5px solid var(--btn-color) !important;
+}
+
+.reject-btn:hover {
+  background-color: var(--btn-color);
+}
+
+.notification-text small {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #888;
+}
+
 
 
 /* === Mobile Sidebar Overlay === */
@@ -1318,7 +1427,7 @@ footer #row2 p:nth-child(2) {
 }
 
 .edit-profile-pg nav a,
-#profile-pg nav a{
+#profile-pg nav a {
   color: var(--text-color);
   transition: color 0.3s ease;
 }
@@ -1460,7 +1569,7 @@ footer #row2 p:nth-child(2) {
   background: var(--btn-hover-color);
 }
 
-#edit-profile footer a{
+#edit-profile footer a {
   display: none;
 }
 
@@ -1472,14 +1581,14 @@ footer #row2 p:nth-child(2) {
 
 
 /* code for user-profile page */
-#profile-pg{
+#profile-pg {
   height: 100%;
   width: 100%;
   overflow-x: hidden;
   position: relative;
 }
 
-#profile-pg #profile{
+#profile-pg #profile {
   width: 100%;
   height: calc(100%-70px);
   display: flex;
@@ -1609,20 +1718,21 @@ footer #row2 p:nth-child(2) {
   color: var(--text-color);
 }
 
-#profile-pg footer a{
+#profile-pg footer a {
   display: none;
 }
 
 @media screen and (max-width: 678px) {
   .profile-container {
-  padding: 1.5rem;
-  max-width: 350px;
-  top: 65%;
-  margin-bottom: 2rem;
+    padding: 1.5rem;
+    max-width: 350px;
+    top: 65%;
+    margin-bottom: 2rem;
+  }
+
+  .profile-right h3 {
+    font-size: 1.4rem;
+  }
+
 }
 
-.profile-right h3 {
-  font-size: 1.4rem;
-}
-
-}
