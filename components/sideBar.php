@@ -16,12 +16,12 @@
         <?php
         if ($_SESSION['role'] === 'admin') {
         ?>
-        <div class="link">
-          <a href="admin/admin-panel.php">
-            <i class="ri-dashboard-line"></i>
-            <span>Dashboard</span>
-          </a>
-        </div>
+          <div class="link">
+            <a href="admin/admin-panel.php">
+              <i class="ri-dashboard-line"></i>
+              <span>Dashboard</span>
+            </a>
+          </div>
         <?php } ?>
         <?php
         if ($_SESSION['role'] === 'user') {
@@ -35,21 +35,24 @@
           <div class="link notification-icon">
             <?php
             include 'config.php';
-            $sql = "SELECT COUNT(sender_id) AS notifications FROM connection_requests WHERE status = 'pending'";
+           $user_id = $_SESSION['user_id'];
+            $sql = "SELECT COUNT(receiver_id) AS notifications FROM connection_requests WHERE status = 'pending'
+            AND receiver_id = $user_id";
+
             $result = mysqli_query($connect, $sql);
-             $row = mysqli_fetch_assoc($result);
+            $row = mysqli_fetch_assoc($result);
             ?>
             <a href="#">
               <i class="ri-notification-3-line"></i>
               <span class="span">Notification</span>
               <span class="badge" id="notif-count"><?php
-              if ($row['notifications'] > 0) {
-               echo $row['notifications'];
-              } else{
+                if ($row['notifications'] > 0) {
+                echo $row['notifications'];
+                } else {
                 echo " ";
-              }
-              ?>
-            </span>
+                }
+                ?>
+              </span>
             </a>
           </div>
         <?php } ?>

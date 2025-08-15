@@ -4,8 +4,9 @@ include 'config.php';
 
 $userId = isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null;
 
-if (!isset($_SESSION['email'])) {
-    header('location:index.php');
+if (!$userId) {
+  echo json_encode(['error' => 'Not logged in']);
+  exit;
 }
 
 $sql = "SELECT cr.id, cr.status, u.first_name, u.profile_photo, cr.sent_at

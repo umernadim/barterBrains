@@ -36,32 +36,34 @@
           <p class="user-role"><?= $row['profession']; ?></p>
           <div class="profile-buttons">
             <?php
-            $currentUserId = $_SESSION['user_id'];
-            $sender_id = (int)$currentUserId;
-            $receiver_id = (int)$row['id'];
+                    $currentUserId = $_SESSION['user_id'];
+                    $sender_id = (int)$currentUserId;
+                    $receiver_id = (int)$row['id'];
 
-            // Check if already connected
-            $checkConnection = "SELECT * FROM connection_requests 
+                    // Check if already connected
+                    $checkConnection = "SELECT * FROM connection_requests 
                     WHERE ((sender_id = $sender_id AND receiver_id = $receiver_id)
-                    OR (sender_id = $receiver_id AND receiver_id = $sender_id))
-                  AND status = 'accepted'";
-            $connResult = mysqli_query($connect, $checkConnection);
-            $isConnected = mysqli_num_rows($connResult) > 0;
+                        OR (sender_id = $receiver_id AND receiver_id = $sender_id))
+                      AND status = 'accepted'";
+                    $connResult = mysqli_query($connect, $checkConnection);
+                    $isConnected = mysqli_num_rows($connResult) > 0;
 
-            // Check if request already sent and pending
-            $checkPending = "SELECT * FROM connection_requests 
+                    // Check if request already sent and pending
+                    $checkPending = "SELECT * FROM connection_requests 
                     WHERE sender_id = $sender_id AND receiver_id = $receiver_id AND status = 'pending'";
-            $pendingResult = mysqli_query($connect, $checkPending);
-            $alreadyRequested = mysqli_num_rows($pendingResult) > 0;
-            ?>
+                    $pendingResult = mysqli_query($connect, $checkPending);
+                    $alreadyRequested = mysqli_num_rows($pendingResult) > 0;
+                    ?>
 
-            <?php if ($isConnected): ?>
-              <button class="request-btn connected-btn" disabled>Connected</button>
-            <?php elseif ($alreadyRequested): ?>
-              <button class="request-btn connect-btn" data-requested="true" disabled>Requested</button>
-            <?php else: ?>
-              <button class="request-btn connect-btn" data-receiver-id="<?= $receiver_id ?>">Connect</button>
-            <?php endif; ?>
+
+                    <?php if ($isConnected): ?>
+                      <button class="request-btn connected-btn" disabled>Connected</button>
+                    <?php elseif ($alreadyRequested): ?>
+                      <button class="request-btn connect-btn" data-requested="true" disabled>Requested</button>
+                    <?php else: ?>
+                      <button class="request-btn connect-btn" data-receiver-id="<?= $receiver_id ?>">Connect</button>
+                    <?php endif; ?>
+
             <button class="message-btn">Message</button>
           </div>
         </div>

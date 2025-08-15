@@ -94,7 +94,7 @@
           <a href="dashboard.php" class="clear-search-btn">← Back to All</a>
         <?php endif; ?>
 
-        <h2><?= (!empty($matched_users) || mysqli_num_rows($suggest_result) < 0) ? '🎯Best Matches for You..' : '🥺No matched found' ?></h2>
+        <h2><?= (!empty($matched_users) || mysqli_num_rows($suggest_result) > 0) ? '🎯Best Matches for You..' : '🥺No matched found' ?></h2>
 
         <form action="" method="get">
           <input type="text" name="search" value="<?= htmlspecialchars($search); ?>" placeholder="Search user..." />
@@ -113,6 +113,7 @@
                   <p>Teaches: <span id="tech-badge"><?= $row['teach_skills']; ?></span></p>
                   <p>Wants: <span id="Learn-badge"><?= $row['learn_skills']; ?></span></p>
                   <div id="buttons">
+
                     <?php
                     $sender_id = (int)$currentUserId;
                     $receiver_id = (int)$row['id'];
@@ -139,6 +140,7 @@
                     <?php else: ?>
                       <button class="request-btn connect-btn" data-receiver-id="<?= $receiver_id ?>">Connect</button>
                     <?php endif; ?>
+
 
                     <a href="user-profile.php?profileId=<?= $row['id']; ?>">
                       <button>Profile</button>
@@ -190,7 +192,6 @@
                       <button class="request-btn connect-btn" data-receiver-id="<?= $receiver_id ?>">Connect</button>
                     <?php endif; ?>
 
-
                     <a href="user-profile.php?profileId=<?= $row['id']; ?>">
                       <button>Profile</button>
                     </a>
@@ -233,12 +234,7 @@
       </div>
 
       <div id="profile-content">
-        <div id="buttons">
-          <button>Messages</button>
-          <a href="edit-profile.php">
-            <button>Edit Profile</button>
-          </a>
-        </div>
+
         <h3 id="profile-name">
           <?= $row['first_name'] . " " . $row['last_name']; ?>
         </h3>
@@ -264,6 +260,11 @@
           <h4>Learning: <span id="learn">
               <?= $row['learn_skills']; ?>
             </span></h4>
+        </div>
+        <div id="buttons">
+          <a href="edit-profile.php">
+            <button>Update Profile</button>
+          </a>
         </div>
       </div>
     </div>
@@ -309,8 +310,6 @@
     <!-- === notification Modal === -->
     <div id="notification-panel" class="notification-panel">
       <h4>Notifications</h4>
-
-
     </div>
 
     <!-- Code to show message popup after feedback -->
