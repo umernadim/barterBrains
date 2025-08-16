@@ -27,9 +27,9 @@
         if ($_SESSION['role'] === 'user') {
         ?>
           <div class="link">
-            <a href="#">
+            <a href="messenger.php">
               <i class="ri-discuss-line"></i>
-              <span>Messages</span>
+              <span>Messenger</span>
             </a>
           </div>
           <div class="link notification-icon">
